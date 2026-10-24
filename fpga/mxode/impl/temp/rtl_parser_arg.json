@@ -1,0 +1,53 @@
+{
+ "Device" : "GW2AR-18",
+ "Files" : [
+  {
+   "Path" : "C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/mxode_top.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/stm32_interface.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/syncEdgeDetect.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/sCommandProcessor.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/sd_reader.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/sdcmd_ctrl.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/nCommandProcessor.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/nCommandTypes.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/gowin_sdpb/gowin_sdpb.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/gowin_rpll/gowin_rpll.v",
+   "Type" : "verilog"
+  }
+ ],
+ "IncludePath" : [
+
+ ],
+ "LoopLimit" : 2000,
+ "ResultFile" : "C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/impl/temp/rtl_parser.result",
+ "Top" : "",
+ "VerilogStd" : "sysv",
+ "VhdlStd" : "vhdl_93"
+}

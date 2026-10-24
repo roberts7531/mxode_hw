@@ -1,0 +1,25 @@
+<?xml version="1" encoding="UTF-8"?>
+<!DOCTYPE gowin-fpga-project>
+<Project>
+    <Template>FPGA</Template>
+    <Version>5</Version>
+    <Device name="GW2AR-18" pn="GW2AR-LV18QN88C8/I7">gw2ar18-000</Device>
+    <FileList>
+        <File path="src/fifo_hs/fifo_hs.v" type="file.verilog" enable="0"/>
+        <File path="src/gowin_rpll/gowin_rpll.v" type="file.verilog" enable="1"/>
+        <File path="src/gowin_sdpb/gowin_sdpb.v" type="file.verilog" enable="1"/>
+        <File path="src/mxode_top.sv" type="file.verilog" enable="1"/>
+        <File path="src/nCommandProcessor.sv" type="file.verilog" enable="1"/>
+        <File path="src/nCommandTypes.sv" type="file.verilog" enable="1"/>
+        <File path="src/sCommandProcessor.sv" type="file.verilog" enable="1"/>
+        <File path="src/sd_reader.sv" type="file.verilog" enable="1"/>
+        <File path="src/sdcmd_ctrl.sv" type="file.verilog" enable="1"/>
+        <File path="src/stm32_interface.sv" type="file.verilog" enable="1"/>
+        <File path="src/syncEdgeDetect.sv" type="file.verilog" enable="1"/>
+        <File path="src/mxode.cst" type="file.cst" enable="1"/>
+        <File path="src/mxode.sdc" type="file.sdc" enable="1"/>
+        <File path="src/dmaOut.rao" type="file.gao" enable="1"/>
+        <File path="src/mxode.rao" type="file.gao" enable="0"/>
+        <File path="src/sdcard.rao" type="file.gao" enable="0"/>
+    </FileList>
+</Project>

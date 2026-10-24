@@ -1,0 +1,109 @@
+GowinSynthesis start
+Running parser ...
+Analyzing Verilog file 'C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\mxode_top.sv'
+Analyzing Verilog file 'C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\stm32_interface.sv'
+Analyzing Verilog file 'C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\syncEdgeDetect.sv'
+Analyzing Verilog file 'C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\sCommandProcessor.sv'
+Analyzing Verilog file 'C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\sd_reader.sv'
+Analyzing Verilog file 'C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\sdcmd_ctrl.sv'
+Analyzing Verilog file 'C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\nCommandTypes.sv'
+Analyzing Verilog file 'C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\nCommandProcessor.sv'
+WARN  (EX2830) : Data object 'dma_busy' is already declared("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\nCommandProcessor.sv":323)
+Previous declaration of 'dma_busy' is from here("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\nCommandProcessor.sv":63)
+WARN  (EX3671) : Second declaration of 'dma_busy' is ignored("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\nCommandProcessor.sv":323)
+Analyzing Verilog file 'C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\gowin_sdpb\gowin_sdpb.v'
+Analyzing Verilog file 'C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\gowin_rpll\gowin_rpll.v'
+Analyzing Verilog file 'C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_crc32.v'
+Analyzing Verilog file 'C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_match.v'
+Analyzing included file 'C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_define.v'("C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_match.v":374)
+Back to file 'C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_match.v'("C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_match.v":374)
+Analyzing included file 'C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\impl\gwsynthesis\RTL_GAO\ao_0\gw_ao_top_define.v'("C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_match.v":374)
+Back to file 'C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_match.v'("C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_match.v":374)
+Analyzing included file 'C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\impl\gwsynthesis\RTL_GAO\ao_0\gw_ao_init.v'("C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_match.v":374)
+Back to file 'C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_match.v'("C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_match.v":374)
+Analyzing Verilog file 'C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_mem_ctrl.v'
+Analyzing included file 'C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\impl\gwsynthesis\RTL_GAO\ao_0\gw_ao_top_define.v'("C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_mem_ctrl.v":1256)
+Back to file 'C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_mem_ctrl.v'("C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_mem_ctrl.v":1256)
+Analyzing Verilog file 'C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_top.v'
+Analyzing included file 'C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_define.v'("C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_top.v":3042)
+Back to file 'C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_top.v'("C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_top.v":3042)
+Analyzing included file 'C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\impl\gwsynthesis\RTL_GAO\ao_0\gw_ao_top_define.v'("C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_top.v":3042)
+Back to file 'C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_top.v'("C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_top.v":3042)
+Analyzing included file 'C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\impl\gwsynthesis\RTL_GAO\ao_0\gw_ao_expression.v'("C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_top.v":3042)
+Back to file 'C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_top.v'("C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_top.v":3042)
+Analyzing included file 'C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\impl\gwsynthesis\RTL_GAO\ao_0\gw_ao_parameter.v'("C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_top.v":3042)
+Back to file 'C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_top.v'("C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_top.v":3042)
+Analyzing included file 'C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\impl\gwsynthesis\RTL_GAO\ao_0\gw_ao_init.v'("C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_top.v":3042)
+Back to file 'C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_top.v'("C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_top.v":3042)
+Analyzing Verilog file 'C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_CON\gw_con_top.v'
+Analyzing included file 'C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\impl\gwsynthesis\RTL_GAO\ao_control\gw_con_top_define.v'("C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_CON\gw_con_top.v":377)
+Back to file 'C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_CON\gw_con_top.v'("C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_CON\gw_con_top.v":377)
+Analyzing included file 'C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\impl\gwsynthesis\RTL_GAO\ao_control\gw_con_parameter.v'("C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_CON\gw_con_top.v":377)
+Back to file 'C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_CON\gw_con_top.v'("C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_CON\gw_con_top.v":377)
+Analyzing Verilog file 'C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\gw_jtag.v'
+Analyzing Verilog file 'C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\impl\gwsynthesis\RTL_GAO\gw_gao_top.v'
+WARN  (EX3073) : Port 'dma_has_bus' remains unconnected for this instance("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\mxode_top.sv":144)
+WARN  (EX3073) : Port 'sync' remains unconnected for this instance("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\stm32_interface.sv":44)
+WARN  (EX3073) : Port 'rising' remains unconnected for this instance("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\stm32_interface.sv":52)
+WARN  (EX3073) : Port 'rising' remains unconnected for this instance("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\stm32_interface.sv":60)
+WARN  (EX3073) : Port 'rising' remains unconnected for this instance("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\sCommandProcessor.sv":80)
+WARN  (EX3073) : Port 'rising' remains unconnected for this instance("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\nCommandProcessor.sv":55)
+WARN  (EX3073) : Port 'sync' remains unconnected for this instance("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\nCommandProcessor.sv":61)
+WARN  (EX3073) : Port 'sync' remains unconnected for this instance("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\nCommandProcessor.sv":69)
+WARN  (EX3073) : Port 'rising' remains unconnected for this instance("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\nCommandProcessor.sv":308)
+WARN  (EX3073) : Port 'rising' remains unconnected for this instance("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\nCommandProcessor.sv":316)
+Compiling module 'mxode_top'("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\mxode_top.sv":1)
+Compiling module 'Gowin_rPLL'("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\gowin_rpll\gowin_rpll.v":9)
+Compiling module 'sd_reader'("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\sd_reader.sv":12)
+Compiling module 'sdcmd_ctrl'("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\sdcmd_ctrl.sv":10)
+WARN  (EX3670) : Actual bit length 4 differs from formal bit length 5 for port 'card_stat'("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\mxode_top.sv":66)
+WARN  (EX3670) : Actual bit length 4 differs from formal bit length 2 for port 'card_type'("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\mxode_top.sv":67)
+WARN  (EX3670) : Actual bit length 11 differs from formal bit length 9 for port 'outaddr'("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\mxode_top.sv":73)
+Compiling module 'sCommandProcessor'("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\sCommandProcessor.sv":1)
+Compiling module 'stm32_interface'("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\stm32_interface.sv":1)
+Compiling module 'syncEdgeDetect'("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\syncEdgeDetect.sv":1)
+WARN  (EX1998) : Net 'spi_tx[17][7]' does not have a driver("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\sCommandProcessor.sv":26)
+WARN  (EX1998) : Net 'responseBuffer[20][7]' does not have a driver("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\sCommandProcessor.sv":50)
+Compiling module 'nCommandProcessor'("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\nCommandProcessor.sv":1)
+WARN  (EX3791) : Expression size 32 truncated to fit in target size 15("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\nCommandProcessor.sv":137)
+Compiling module 'Gowin_SDPB'("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\gowin_sdpb\gowin_sdpb.v":9)
+WARN  (EX3670) : Actual bit length 32 differs from formal bit length 1 for port 'reseta'("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\nCommandProcessor.sv":276)
+WARN  (EX3670) : Actual bit length 32 differs from formal bit length 1 for port 'ceb'("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\nCommandProcessor.sv":278)
+WARN  (EX3670) : Actual bit length 32 differs from formal bit length 1 for port 'resetb'("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\nCommandProcessor.sv":279)
+WARN  (EX3670) : Actual bit length 32 differs from formal bit length 1 for port 'oce'("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\nCommandProcessor.sv":280)
+WARN  (EX3670) : Actual bit length 32 differs from formal bit length 13 for port 'adb'("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\nCommandProcessor.sv":283)
+WARN  (EX1998) : Net 'cs_fall' does not have a driver("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\nCommandProcessor.sv":295)
+WARN  (EX3670) : Actual bit length 16 differs from formal bit length 8 for port 'dataIn'("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\mxode_top.sv":127)
+Compiling module '**'("C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_crc32.v":74)
+Compiling module '**'("C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_match.v":374)
+Compiling module '**'("C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_mem_ctrl.v":1256)
+Extracting RAM for identifier '**'("C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_mem_ctrl.v":1256)
+Compiling module '**'("C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_top.v":3042)
+Compiling module '**'("C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\GAO\GW_CON\gw_con_top.v":377)
+Compiling module 'GW_JTAG'("C:\Gowin\Gowin_V1.9.12_x64\IDE\data\ipcores\gw_jtag.v":1)
+Compiling module 'gw_gao'("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\impl\gwsynthesis\RTL_GAO\gw_gao_top.v":1)
+Trying to combine GAO to RTL design
+NOTE  (EX0101) : Current top module is "mxode_top"
+WARN  (EX0211) : The output port "dma_has_bus" of module "nCommandProcessor" has no driver, assigning undriven bits to Z, simulation mismatch possible("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\nCommandProcessor.sv":20)
+[5%] Running netlist conversion ...
+Running device independent optimization ...
+[10%] Optimizing Phase 0 completed
+[15%] Optimizing Phase 1 completed
+[25%] Optimizing Phase 2 completed
+Running inference ...
+[30%] Inferring Phase 0 completed
+[40%] Inferring Phase 1 completed
+[50%] Inferring Phase 2 completed
+[55%] Inferring Phase 3 completed
+Running technical mapping ...
+[60%] Tech-Mapping Phase 0 completed
+[65%] Tech-Mapping Phase 1 completed
+[75%] Tech-Mapping Phase 2 completed
+[80%] Tech-Mapping Phase 3 completed
+[90%] Tech-Mapping Phase 4 completed
+WARN  (NL0002) : The module "syncEdgeDetect" instantiated to "wrSync" is swept in optimizing("C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\nCommandProcessor.sv":61)
+[95%] Generate netlist file "C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\impl\gwsynthesis\mxode.vg" completed
+WARN  (CK3000) : Can't calculate clocks' relationship between: "dma_clk" and "mainPll/rpll_inst/CLKOUT.default_gen_clk"
+WARN  (CK3000) : Can't calculate clocks' relationship between: "mainPll/rpll_inst/CLKOUT.default_gen_clk" and "dma_clk"
+[100%] Generate report file "C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\impl\gwsynthesis\mxode_syn.rpt.html" completed
+GowinSynthesis finish

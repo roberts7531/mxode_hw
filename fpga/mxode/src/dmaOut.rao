@@ -1,0 +1,135 @@
+<?xml version="1" encoding="UTF-8"?>
+<GAO_CONFIG>
+    <Version>3.0</Version>
+    <Mode>Standard</Mode>
+    <AoCore index="0" sample_clock="dma_clk" trig_type="0" storage_depth="4096" window_num="3" capture_amount="1024" implementation="0" trigger_pos="0" module_name="mxode_top" force_trigger_by_falling_edge="false" capture_init_data_enabled="false">
+        <SignalList>
+            <Bus capture_enable="true" name="nProc/dmaByteCount[31:0]">
+                <Signal>nProc/dmaByteCount[31]</Signal>
+                <Signal>nProc/dmaByteCount[30]</Signal>
+                <Signal>nProc/dmaByteCount[29]</Signal>
+                <Signal>nProc/dmaByteCount[28]</Signal>
+                <Signal>nProc/dmaByteCount[27]</Signal>
+                <Signal>nProc/dmaByteCount[26]</Signal>
+                <Signal>nProc/dmaByteCount[25]</Signal>
+                <Signal>nProc/dmaByteCount[24]</Signal>
+                <Signal>nProc/dmaByteCount[23]</Signal>
+                <Signal>nProc/dmaByteCount[22]</Signal>
+                <Signal>nProc/dmaByteCount[21]</Signal>
+                <Signal>nProc/dmaByteCount[20]</Signal>
+                <Signal>nProc/dmaByteCount[19]</Signal>
+                <Signal>nProc/dmaByteCount[18]</Signal>
+                <Signal>nProc/dmaByteCount[17]</Signal>
+                <Signal>nProc/dmaByteCount[16]</Signal>
+                <Signal>nProc/dmaByteCount[15]</Signal>
+                <Signal>nProc/dmaByteCount[14]</Signal>
+                <Signal>nProc/dmaByteCount[13]</Signal>
+                <Signal>nProc/dmaByteCount[12]</Signal>
+                <Signal>nProc/dmaByteCount[11]</Signal>
+                <Signal>nProc/dmaByteCount[10]</Signal>
+                <Signal>nProc/dmaByteCount[9]</Signal>
+                <Signal>nProc/dmaByteCount[8]</Signal>
+                <Signal>nProc/dmaByteCount[7]</Signal>
+                <Signal>nProc/dmaByteCount[6]</Signal>
+                <Signal>nProc/dmaByteCount[5]</Signal>
+                <Signal>nProc/dmaByteCount[4]</Signal>
+                <Signal>nProc/dmaByteCount[3]</Signal>
+                <Signal>nProc/dmaByteCount[2]</Signal>
+                <Signal>nProc/dmaByteCount[1]</Signal>
+                <Signal>nProc/dmaByteCount[0]</Signal>
+            </Bus>
+            <Signal capture_enable="true">HACK</Signal>
+            <Signal capture_enable="true">nProc/ack_sampled</Signal>
+            <Signal capture_enable="true">dsp_cs_in</Signal>
+            <Signal capture_enable="true">dsp_rd</Signal>
+            <Signal capture_enable="true">dsp_wr</Signal>
+            <Signal capture_enable="true">nProc/cs_sync</Signal>
+            <Signal capture_enable="true">dma_clk</Signal>
+            <Bus capture_enable="true" name="dmaDataOut[31:0]">
+                <Signal>dmaDataOut[31]</Signal>
+                <Signal>dmaDataOut[30]</Signal>
+                <Signal>dmaDataOut[29]</Signal>
+                <Signal>dmaDataOut[28]</Signal>
+                <Signal>dmaDataOut[27]</Signal>
+                <Signal>dmaDataOut[26]</Signal>
+                <Signal>dmaDataOut[25]</Signal>
+                <Signal>dmaDataOut[24]</Signal>
+                <Signal>dmaDataOut[23]</Signal>
+                <Signal>dmaDataOut[22]</Signal>
+                <Signal>dmaDataOut[21]</Signal>
+                <Signal>dmaDataOut[20]</Signal>
+                <Signal>dmaDataOut[19]</Signal>
+                <Signal>dmaDataOut[18]</Signal>
+                <Signal>dmaDataOut[17]</Signal>
+                <Signal>dmaDataOut[16]</Signal>
+                <Signal>dmaDataOut[15]</Signal>
+                <Signal>dmaDataOut[14]</Signal>
+                <Signal>dmaDataOut[13]</Signal>
+                <Signal>dmaDataOut[12]</Signal>
+                <Signal>dmaDataOut[11]</Signal>
+                <Signal>dmaDataOut[10]</Signal>
+                <Signal>dmaDataOut[9]</Signal>
+                <Signal>dmaDataOut[8]</Signal>
+                <Signal>dmaDataOut[7]</Signal>
+                <Signal>dmaDataOut[6]</Signal>
+                <Signal>dmaDataOut[5]</Signal>
+                <Signal>dmaDataOut[4]</Signal>
+                <Signal>dmaDataOut[3]</Signal>
+                <Signal>dmaDataOut[2]</Signal>
+                <Signal>dmaDataOut[1]</Signal>
+                <Signal>dmaDataOut[0]</Signal>
+            </Bus>
+            <Signal capture_enable="true">HDRQ</Signal>
+            <Bus capture_enable="true" name="nProc/currentDmaState[3:0]">
+                <Signal>nProc/currentDmaState[3]</Signal>
+                <Signal>nProc/currentDmaState[2]</Signal>
+                <Signal>nProc/currentDmaState[1]</Signal>
+                <Signal>nProc/currentDmaState[0]</Signal>
+            </Bus>
+        </SignalList>
+        <Triggers>
+            <Trigger index="0">
+                <SignalList>
+                    <Signal>nProc/intrStatus[1]</Signal>
+                </SignalList>
+            </Trigger>
+            <Trigger index="1"/>
+            <Trigger index="2"/>
+            <Trigger index="3"/>
+            <Trigger index="4"/>
+            <Trigger index="5"/>
+            <Trigger index="6"/>
+            <Trigger index="7"/>
+            <Trigger index="8"/>
+            <Trigger index="9"/>
+            <Trigger index="10"/>
+            <Trigger index="11"/>
+            <Trigger index="12"/>
+            <Trigger index="13"/>
+            <Trigger index="14"/>
+            <Trigger index="15"/>
+        </Triggers>
+        <MatchUnits>
+            <MatchUnit index="0" enabled="1" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="1" value1="0" trigger="0"/>
+            <MatchUnit index="1" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="2" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="3" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="4" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="5" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="6" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="7" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="8" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="9" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="10" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="11" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="12" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="13" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="14" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="15" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+        </MatchUnits>
+        <Expressions type="Static">
+            <Expression>M0</Expression>
+        </Expressions>
+    </AoCore>
+    <GAO_ID>0000010101000110</GAO_ID>
+</GAO_CONFIG>

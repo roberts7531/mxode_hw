@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module name="mxode_top" Register="28" Alu="26" Lut="223" T_Register="1800(28)" T_Alu="86(26)" T_Lut="2270(223)" T_Bsram="36(0)">
+ <SubModule name="mainPll"/>
+ <SubModule name="sd_reader_inst" Register="167" Lut="335" T_Register="317(167)" T_Alu="14(0)" T_Lut="526(335)">
+  <SubModule name="sdcmd_ctrl_i" Register="150" Alu="14" Lut="191" T_Register="150(150)" T_Alu="14(14)" T_Lut="191(191)"/>
+ </SubModule>
+ <SubModule name="sProcInst" Register="459" Lut="427" T_Register="660(459)" T_Lut="681(427)">
+  <SubModule name="stm32_interface_inst" Register="191" Lut="254" T_Register="197(191)" T_Lut="254(254)">
+   <SubModule name="sckSync" Register="2" T_Register="2(2)"/>
+   <SubModule name="csSync" Register="2" T_Register="2(2)"/>
+   <SubModule name="mosiSync" Register="2" T_Register="2(2)"/>
+  </SubModule>
+  <SubModule name="writeSync" Register="2" T_Register="2(2)"/>
+  <SubModule name="readSync" Register="2" T_Register="2(2)"/>
+ </SubModule>
+ <SubModule name="nProc" Register="233" Alu="31" Lut="279" T_Register="242(233)" T_Alu="31(31)" T_Lut="312(279)" T_Bsram="16(0)">
+  <SubModule name="dmaAckSync" Register="2" T_Register="2(2)"/>
+  <SubModule name="dmaBusySync" Register="2" Lut="1" T_Register="2(2)" T_Lut="1(1)"/>
+  <SubModule name="disk_buffer" Register="1" Lut="32" Bsram="16" T_Register="1(1)" T_Lut="32(32)" T_Bsram="16(16)"/>
+  <SubModule name="dma_start_sync" Register="2" T_Register="2(2)"/>
+  <SubModule name="dma_ack_sync" Register="2" T_Register="2(2)"/>
+ </SubModule>
+ <SubModule name="gw_gao_inst_0" Register="553" Alu="15" Lut="528" Bsram="20" T_Register="553(553)" T_Alu="15(15)" T_Lut="528(528)" T_Bsram="20(20)"/>
+</Module>

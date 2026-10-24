@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>Hierarchy Module Resource</title>
+<style type="text/css">
+body { font-family: Verdana, Arial, sans-serif; font-size: 14px; }
+div#main_wrapper{ width: 100%; }
+h1 {text-align: center; }
+h1 {margin-top: 36px; }
+table, th, td { border: 1px solid #aaa; }
+table { border-collapse:collapse; margin-top: 10px; margin-bottom: 20px; width: 100%; }
+th, td { align = "center"; padding: 5px 2px 5px 5px; }
+th { color: #fff; font-weight: bold; background-color: #0084ff; }
+table td.label { width: 20%; white-space: nowrap; min-width: 20px; background-color: #dee8f4; }
+</style>
+</head>
+<body>
+<div id="main_wrapper">
+<div id="content">
+<h1>Hierarchy Module Resource</h1>
+<table>
+<tr>
+<th class="label">MODULE NAME</th>
+<th class="label">REG NUMBER</th>
+<th class="label">ALU NUMBER</th>
+<th class="label">LUT NUMBER</th>
+<th class="label">DSP NUMBER</th>
+<th class="label">BSRAM NUMBER</th>
+<th class="label">SSRAM NUMBER</th>
+<th class="label">ROM16 NUMBER</th>
+</tr>
+<tr>
+<td class="label">mxode_top (C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/mxode_top.sv)</td>
+<td align = "center">28</td>
+<td align = "center">26</td>
+<td align = "center">223</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp|--mainPll
+ (C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/mxode_top.sv)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp|--sd_reader_inst
+ (C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/mxode_top.sv)</td>
+<td align = "center">167</td>
+<td align = "center">-</td>
+<td align = "center">335</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--sdcmd_ctrl_i
+ (C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/sd_reader.sv)</td>
+<td align = "center">150</td>
+<td align = "center">14</td>
+<td align = "center">191</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp|--sProcInst
+ (C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/mxode_top.sv)</td>
+<td align = "center">459</td>
+<td align = "center">-</td>
+<td align = "center">427</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--stm32_interface_inst
+ (C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/sCommandProcessor.sv)</td>
+<td align = "center">191</td>
+<td align = "center">-</td>
+<td align = "center">254</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--sckSync
+ (C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/stm32_interface.sv)</td>
+<td align = "center">2</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--csSync
+ (C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/stm32_interface.sv)</td>
+<td align = "center">2</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--mosiSync
+ (C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/stm32_interface.sv)</td>
+<td align = "center">2</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--writeSync
+ (C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/sCommandProcessor.sv)</td>
+<td align = "center">2</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--readSync
+ (C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/sCommandProcessor.sv)</td>
+<td align = "center">2</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp|--nProc
+ (C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/mxode_top.sv)</td>
+<td align = "center">233</td>
+<td align = "center">31</td>
+<td align = "center">279</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--dmaAckSync
+ (C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/nCommandProcessor.sv)</td>
+<td align = "center">2</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--dmaBusySync
+ (C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/nCommandProcessor.sv)</td>
+<td align = "center">2</td>
+<td align = "center">-</td>
+<td align = "center">1</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--disk_buffer
+ (C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/nCommandProcessor.sv)</td>
+<td align = "center">1</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">16</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--dma_start_sync
+ (C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/nCommandProcessor.sv)</td>
+<td align = "center">2</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--dma_ack_sync
+ (C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/nCommandProcessor.sv)</td>
+<td align = "center">2</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp|--gw_gao_inst_0
+ (C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/impl/gwsynthesis/RTL_GAO/gw_gao_top.v)</td>
+<td align = "center">553</td>
+<td align = "center">15</td>
+<td align = "center">528</td>
+<td align = "center">-</td>
+<td align = "center">20</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+</table>
+</div><!-- content -->
+</div><!-- main_wrapper -->
+</body>
+</html>

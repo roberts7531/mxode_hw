@@ -1,0 +1,135 @@
+<?xml version="1" encoding="UTF-8"?>
+<GAO_CONFIG>
+    <Version>3.0</Version>
+    <Mode>Standard</Mode>
+    <AoCore index="0" sample_clock="clk27" trig_type="0" storage_depth="4096" window_num="1" capture_amount="4096" implementation="0" trigger_pos="0" module_name="mxode_top" force_trigger_by_falling_edge="false" capture_init_data_enabled="false">
+        <SignalList>
+            <Bus capture_enable="true" name="sd_reader_inst/card_stat[3:0]">
+                <Signal>sd_reader_inst/card_stat[3]</Signal>
+                <Signal>sd_reader_inst/card_stat[2]</Signal>
+                <Signal>sd_reader_inst/card_stat[1]</Signal>
+                <Signal>sd_reader_inst/card_stat[0]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="sd_reader_inst/card_type[1:0]">
+                <Signal>sd_reader_inst/card_type[1]</Signal>
+                <Signal>sd_reader_inst/card_type[0]</Signal>
+            </Bus>
+            <Signal capture_enable="true">sd_busy</Signal>
+            <Signal capture_enable="true">sd_rstn</Signal>
+            <Bus capture_enable="true" name="sd_dat[3:0]">
+                <Signal>sd_dat[3]</Signal>
+                <Signal>sd_dat[2]</Signal>
+                <Signal>sd_dat[1]</Signal>
+                <Signal>sd_dat[0]</Signal>
+            </Bus>
+            <Signal capture_enable="true">sd_clk</Signal>
+            <Signal capture_enable="true">sd_cmd</Signal>
+            <Bus capture_enable="true" name="sector_lba[31:0]">
+                <Signal>sector_lba[31]</Signal>
+                <Signal>sector_lba[30]</Signal>
+                <Signal>sector_lba[29]</Signal>
+                <Signal>sector_lba[28]</Signal>
+                <Signal>sector_lba[27]</Signal>
+                <Signal>sector_lba[26]</Signal>
+                <Signal>sector_lba[25]</Signal>
+                <Signal>sector_lba[24]</Signal>
+                <Signal>sector_lba[23]</Signal>
+                <Signal>sector_lba[22]</Signal>
+                <Signal>sector_lba[21]</Signal>
+                <Signal>sector_lba[20]</Signal>
+                <Signal>sector_lba[19]</Signal>
+                <Signal>sector_lba[18]</Signal>
+                <Signal>sector_lba[17]</Signal>
+                <Signal>sector_lba[16]</Signal>
+                <Signal>sector_lba[15]</Signal>
+                <Signal>sector_lba[14]</Signal>
+                <Signal>sector_lba[13]</Signal>
+                <Signal>sector_lba[12]</Signal>
+                <Signal>sector_lba[11]</Signal>
+                <Signal>sector_lba[10]</Signal>
+                <Signal>sector_lba[9]</Signal>
+                <Signal>sector_lba[8]</Signal>
+                <Signal>sector_lba[7]</Signal>
+                <Signal>sector_lba[6]</Signal>
+                <Signal>sector_lba[5]</Signal>
+                <Signal>sector_lba[4]</Signal>
+                <Signal>sector_lba[3]</Signal>
+                <Signal>sector_lba[2]</Signal>
+                <Signal>sector_lba[1]</Signal>
+                <Signal>sector_lba[0]</Signal>
+            </Bus>
+            <Signal capture_enable="true">nProc/disk_buffer/cea</Signal>
+            <Bus capture_enable="true" name="nProc/disk_buffer/ada[14:0]">
+                <Signal>nProc/disk_buffer/ada[14]</Signal>
+                <Signal>nProc/disk_buffer/ada[13]</Signal>
+                <Signal>nProc/disk_buffer/ada[12]</Signal>
+                <Signal>nProc/disk_buffer/ada[11]</Signal>
+                <Signal>nProc/disk_buffer/ada[10]</Signal>
+                <Signal>nProc/disk_buffer/ada[9]</Signal>
+                <Signal>nProc/disk_buffer/ada[8]</Signal>
+                <Signal>nProc/disk_buffer/ada[7]</Signal>
+                <Signal>nProc/disk_buffer/ada[6]</Signal>
+                <Signal>nProc/disk_buffer/ada[5]</Signal>
+                <Signal>nProc/disk_buffer/ada[4]</Signal>
+                <Signal>nProc/disk_buffer/ada[3]</Signal>
+                <Signal>nProc/disk_buffer/ada[2]</Signal>
+                <Signal>nProc/disk_buffer/ada[1]</Signal>
+                <Signal>nProc/disk_buffer/ada[0]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="nProc/disk_buffer/din[7:0]">
+                <Signal>nProc/disk_buffer/din[7]</Signal>
+                <Signal>nProc/disk_buffer/din[6]</Signal>
+                <Signal>nProc/disk_buffer/din[5]</Signal>
+                <Signal>nProc/disk_buffer/din[4]</Signal>
+                <Signal>nProc/disk_buffer/din[3]</Signal>
+                <Signal>nProc/disk_buffer/din[2]</Signal>
+                <Signal>nProc/disk_buffer/din[1]</Signal>
+                <Signal>nProc/disk_buffer/din[0]</Signal>
+            </Bus>
+        </SignalList>
+        <Triggers>
+            <Trigger index="0">
+                <SignalList>
+                    <Signal>nProc/sdWr</Signal>
+                </SignalList>
+            </Trigger>
+            <Trigger index="1"/>
+            <Trigger index="2"/>
+            <Trigger index="3"/>
+            <Trigger index="4"/>
+            <Trigger index="5"/>
+            <Trigger index="6"/>
+            <Trigger index="7"/>
+            <Trigger index="8"/>
+            <Trigger index="9"/>
+            <Trigger index="10"/>
+            <Trigger index="11"/>
+            <Trigger index="12"/>
+            <Trigger index="13"/>
+            <Trigger index="14"/>
+            <Trigger index="15"/>
+        </Triggers>
+        <MatchUnits>
+            <MatchUnit index="0" enabled="1" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="1" value1="0" trigger="0"/>
+            <MatchUnit index="1" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="2" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="3" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="4" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="5" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="6" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="7" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="8" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="9" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="10" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="11" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="12" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="13" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="14" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="15" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+        </MatchUnits>
+        <Expressions type="Static">
+            <Expression>M0</Expression>
+        </Expressions>
+    </AoCore>
+    <GAO_ID>1111101100101111</GAO_ID>
+</GAO_CONFIG>
