@@ -17,15 +17,15 @@
    },
    {
     "InstFile" : "C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/mxode_top.sv",
-    "InstLine" : 60,
+    "InstLine" : 62,
     "InstName" : "sd_reader_inst",
     "ModuleFile" : "C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/sd_reader.sv",
-    "ModuleLine" : 12,
+    "ModuleLine" : 1,
     "ModuleName" : "sd_reader",
     "SubInsts" : [
      {
       "InstFile" : "C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/sd_reader.sv",
-      "InstLine" : 83,
+      "InstLine" : 119,
       "InstName" : "sdcmd_ctrl_i",
       "ModuleFile" : "C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/sdcmd_ctrl.sv",
       "ModuleLine" : 10,
@@ -35,7 +35,7 @@
    },
    {
     "InstFile" : "C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/mxode_top.sv",
-    "InstLine" : 91,
+    "InstLine" : 94,
     "InstName" : "sProcInst",
     "ModuleFile" : "C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/sCommandProcessor.sv",
     "ModuleLine" : 1,
@@ -95,7 +95,15 @@
    },
    {
     "InstFile" : "C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/mxode_top.sv",
-    "InstLine" : 115,
+    "InstLine" : 113,
+    "InstName" : "dmaCounterInst",
+    "ModuleFile" : "C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/dmaCounter.sv",
+    "ModuleLine" : 1,
+    "ModuleName" : "dmaCounter"
+   },
+   {
+    "InstFile" : "C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/mxode_top.sv",
+    "InstLine" : 129,
     "InstName" : "nProc",
     "ModuleFile" : "C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/nCommandProcessor.sv",
     "ModuleLine" : 1,
@@ -103,7 +111,7 @@
     "SubInsts" : [
      {
       "InstFile" : "C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/nCommandProcessor.sv",
-      "InstLine" : 50,
+      "InstLine" : 55,
       "InstName" : "dmaAckSync",
       "ModuleFile" : "C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/syncEdgeDetect.sv",
       "ModuleLine" : 1,
@@ -111,7 +119,7 @@
      },
      {
       "InstFile" : "C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/nCommandProcessor.sv",
-      "InstLine" : 57,
+      "InstLine" : 62,
       "InstName" : "wrSync",
       "ModuleFile" : "C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/syncEdgeDetect.sv",
       "ModuleLine" : 1,
@@ -119,7 +127,7 @@
      },
      {
       "InstFile" : "C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/nCommandProcessor.sv",
-      "InstLine" : 65,
+      "InstLine" : 70,
       "InstName" : "dmaBusySync",
       "ModuleFile" : "C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/syncEdgeDetect.sv",
       "ModuleLine" : 1,
@@ -127,7 +135,7 @@
      },
      {
       "InstFile" : "C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/nCommandProcessor.sv",
-      "InstLine" : 272,
+      "InstLine" : 283,
       "InstName" : "disk_buffer",
       "ModuleFile" : "C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/gowin_sdpb/gowin_sdpb.v",
       "ModuleLine" : 9,
@@ -135,7 +143,7 @@
      },
      {
       "InstFile" : "C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/nCommandProcessor.sv",
-      "InstLine" : 303,
+      "InstLine" : 314,
       "InstName" : "dma_start_sync",
       "ModuleFile" : "C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/syncEdgeDetect.sv",
       "ModuleLine" : 1,
@@ -143,7 +151,7 @@
      },
      {
       "InstFile" : "C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/nCommandProcessor.sv",
-      "InstLine" : 311,
+      "InstLine" : 322,
       "InstName" : "dma_ack_sync",
       "ModuleFile" : "C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/syncEdgeDetect.sv",
       "ModuleLine" : 1,

@@ -7,11 +7,6 @@ Running placement......
 [10%] Placement Phase 0 completed
 [20%] Placement Phase 1 completed
 [30%] Placement Phase 2 completed
-WARN  (TA1132) :  'tck_pad_i' was determined to be a clock but was not created.
-WARN  (TA1117) : Can't calculate clocks' relationship between: "ps2_dma_clock" and "mainPll/rpll_inst/CLKOUT.default_gen_clk"
-WARN  (TA1117) : Can't calculate clocks' relationship between: "mainPll/rpll_inst/CLKOUT.default_gen_clk" and "ps2_dma_clock"
-WARN  (TA1117) : Can't calculate clocks' relationship between: "tck_pad_i" and "ps2_dma_clock"
-WARN  (TA1117) : Can't calculate clocks' relationship between: "ps2_dma_clock" and "tck_pad_i"
 [50%] Placement Phase 3 completed
 Running routing......
 [60%] Routing Phase 0 completed
@@ -32,5 +27,5 @@ Generate file "C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\impl\pnr\mxode.pi
 Generate file "C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\impl\pnr\mxode.rpt.html" completed
 Generate file "C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\impl\pnr\mxode.rpt.txt" completed
 Generate file "C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\impl\pnr\mxode.tr.html" completed
-Sun Oct 25 00:39:12 2026
+Sun Oct 25 22:44:21 2026
 

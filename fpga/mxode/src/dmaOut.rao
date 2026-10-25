@@ -90,7 +90,40 @@
         <Triggers>
             <Trigger index="0">
                 <SignalList>
-                    <Signal>nProc/intrStatus[1]</Signal>
+                    <Bus restorename="dmaByteCount[31:0]">
+                        <Signal>dmaByteCount[31]</Signal>
+                        <Signal>dmaByteCount[30]</Signal>
+                        <Signal>dmaByteCount[29]</Signal>
+                        <Signal>dmaByteCount[28]</Signal>
+                        <Signal>dmaByteCount[27]</Signal>
+                        <Signal>dmaByteCount[26]</Signal>
+                        <Signal>dmaByteCount[25]</Signal>
+                        <Signal>dmaByteCount[24]</Signal>
+                        <Signal>dmaByteCount[23]</Signal>
+                        <Signal>dmaByteCount[22]</Signal>
+                        <Signal>dmaByteCount[21]</Signal>
+                        <Signal>dmaByteCount[20]</Signal>
+                        <Signal>dmaByteCount[19]</Signal>
+                        <Signal>dmaByteCount[18]</Signal>
+                        <Signal>dmaByteCount[17]</Signal>
+                        <Signal>dmaByteCount[16]</Signal>
+                        <Signal>dmaByteCount[15]</Signal>
+                        <Signal>dmaByteCount[14]</Signal>
+                        <Signal>dmaByteCount[13]</Signal>
+                        <Signal>dmaByteCount[12]</Signal>
+                        <Signal>dmaByteCount[11]</Signal>
+                        <Signal>dmaByteCount[10]</Signal>
+                        <Signal>dmaByteCount[9]</Signal>
+                        <Signal>dmaByteCount[8]</Signal>
+                        <Signal>dmaByteCount[7]</Signal>
+                        <Signal>dmaByteCount[6]</Signal>
+                        <Signal>dmaByteCount[5]</Signal>
+                        <Signal>dmaByteCount[4]</Signal>
+                        <Signal>dmaByteCount[3]</Signal>
+                        <Signal>dmaByteCount[2]</Signal>
+                        <Signal>dmaByteCount[1]</Signal>
+                        <Signal>dmaByteCount[0]</Signal>
+                    </Bus>
                 </SignalList>
             </Trigger>
             <Trigger index="1"/>
@@ -110,7 +143,7 @@
             <Trigger index="15"/>
         </Triggers>
         <MatchUnits>
-            <MatchUnit index="0" enabled="1" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="1" value1="0" trigger="0"/>
+            <MatchUnit index="0" enabled="1" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="00000000000000000000111111111100" value1="00000000000000000000000000000000" trigger="0"/>
             <MatchUnit index="1" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
             <MatchUnit index="2" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
             <MatchUnit index="3" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
@@ -131,5 +164,5 @@
             <Expression>M0</Expression>
         </Expressions>
     </AoCore>
-    <GAO_ID>0000010101000110</GAO_ID>
+    <GAO_ID>0100101101111010</GAO_ID>
 </GAO_CONFIG>

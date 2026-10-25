@@ -90,7 +90,24 @@
         <Triggers>
             <Trigger index="0">
                 <SignalList>
-                    <Signal>nProc/sdWr</Signal>
+                    <Bus restorename="nProc/bramWriteAddr[14:0]">
+                        <Signal>nProc/bramWriteAddr[14]</Signal>
+                        <Signal>nProc/bramWriteAddr[13]</Signal>
+                        <Signal>nProc/bramWriteAddr[12]</Signal>
+                        <Signal>nProc/bramWriteAddr[11]</Signal>
+                        <Signal>nProc/bramWriteAddr[10]</Signal>
+                        <Signal>nProc/bramWriteAddr[9]</Signal>
+                        <Signal>nProc/bramWriteAddr[8]</Signal>
+                        <Signal>nProc/bramWriteAddr[7]</Signal>
+                        <Signal>nProc/bramWriteAddr[6]</Signal>
+                        <Signal>nProc/bramWriteAddr[5]</Signal>
+                        <Signal>nProc/bramWriteAddr[4]</Signal>
+                        <Signal>nProc/bramWriteAddr[3]</Signal>
+                        <Signal>nProc/bramWriteAddr[2]</Signal>
+                        <Signal>nProc/bramWriteAddr[1]</Signal>
+                        <Signal>nProc/bramWriteAddr[0]</Signal>
+                    </Bus>
+                    <Signal>sdWr</Signal>
                 </SignalList>
             </Trigger>
             <Trigger index="1"/>
@@ -110,7 +127,7 @@
             <Trigger index="15"/>
         </Triggers>
         <MatchUnits>
-            <MatchUnit index="0" enabled="1" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="1" value1="0" trigger="0"/>
+            <MatchUnit index="0" enabled="1" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="0111111111100001" value1="0000000000000000" trigger="0"/>
             <MatchUnit index="1" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
             <MatchUnit index="2" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
             <MatchUnit index="3" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
@@ -131,5 +148,5 @@
             <Expression>M0</Expression>
         </Expressions>
     </AoCore>
-    <GAO_ID>1111101100101111</GAO_ID>
+    <GAO_ID>0000110011011111</GAO_ID>
 </GAO_CONFIG>

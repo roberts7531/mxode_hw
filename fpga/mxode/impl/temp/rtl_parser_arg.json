@@ -40,6 +40,10 @@
   {
    "Path" : "C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/gowin_rpll/gowin_rpll.v",
    "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Roberts/Documents/ps2_MXODE/fpga/mxode/src/dmaCounter.sv",
+   "Type" : "verilog"
   }
  ],
  "IncludePath" : [

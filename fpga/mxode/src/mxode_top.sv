@@ -45,8 +45,9 @@ always @(posedge clk27) begin
         end
 end
 wire [7:0] sdOut;
-wire [10:0] sdAddr;
+wire [15:0] sdAddr;
 wire sdWr;
+wire [15:0] sectorCount;
 
 wire readSectorStart;
 wire readSectorDone;
@@ -54,11 +55,12 @@ wire [31:0] sector_lba;
 wire sd_busy;
 wire [3:0] card_stat;
 wire [3:0] card_type;
+wire sdRst;
 sd_reader #(
     .CLK_DIV(3'd1),
     .SIMULATE(0)
 ) sd_reader_inst (
-    .rstn     (sd_rstn),
+    .rstn     (!sdRst),
     .clk      (clk27),
     .sdclk    (sd_clk),
     .sdcmd    (sd_cmd),
@@ -66,12 +68,13 @@ sd_reader #(
     .card_stat(card_stat),
     .card_type(card_type),
     .rstart   (readSectorStart),
-    .rsector  (sector_lba),
+    .startLba  (sector_lba),
     .rbusy    (sd_busy),
     .rdone    (readSectorDone),
     .outen    (sdWr),
     .outaddr  (sdAddr),
-    .outbyte  (sdOut)
+    .outbyte  (sdOut),
+    .count    (sectorCount)
 );
 
 
@@ -106,6 +109,17 @@ sCommandProcessor sProcInst(
     .scopro_miso,
     .scopro_irq
 );
+wire [31:0] dmaByteCount;
+dmaCounter dmaCounterInst(
+    .dma_clk(dma_clk),
+    .dsp_cs(dsp_cs_in),
+    .dma_ack(HACK),
+
+    .dmaCurrentByte(dmaByteCount)
+
+
+);
+
 
 wire [7:0] nDataOut;
 wire irq;
@@ -138,7 +152,10 @@ nCommandProcessor nProc(
 		.readSectorStart(readSectorStart),
         .readSectorDone(readSectorDone),
 		.readSectorLba(sector_lba),
-		.sd_busy(sd_busy)
+		.sd_busy(sd_busy),
+        .dmaByteCount,
+        .sdReadCount(sectorCount),
+        .sdReset(sdRst)
 
 
 );

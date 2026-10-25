@@ -75,7 +75,38 @@ module gw_gao(
     \nProc/currentDmaState[2] ,
     \nProc/currentDmaState[1] ,
     \nProc/currentDmaState[0] ,
-    \nProc/intrStatus[1] ,
+    \dmaByteCount[31] ,
+    \dmaByteCount[30] ,
+    \dmaByteCount[29] ,
+    \dmaByteCount[28] ,
+    \dmaByteCount[27] ,
+    \dmaByteCount[26] ,
+    \dmaByteCount[25] ,
+    \dmaByteCount[24] ,
+    \dmaByteCount[23] ,
+    \dmaByteCount[22] ,
+    \dmaByteCount[21] ,
+    \dmaByteCount[20] ,
+    \dmaByteCount[19] ,
+    \dmaByteCount[18] ,
+    \dmaByteCount[17] ,
+    \dmaByteCount[16] ,
+    \dmaByteCount[15] ,
+    \dmaByteCount[14] ,
+    \dmaByteCount[13] ,
+    \dmaByteCount[12] ,
+    \dmaByteCount[11] ,
+    \dmaByteCount[10] ,
+    \dmaByteCount[9] ,
+    \dmaByteCount[8] ,
+    \dmaByteCount[7] ,
+    \dmaByteCount[6] ,
+    \dmaByteCount[5] ,
+    \dmaByteCount[4] ,
+    \dmaByteCount[3] ,
+    \dmaByteCount[2] ,
+    \dmaByteCount[1] ,
+    \dmaByteCount[0] ,
     tms_pad_i,
     tck_pad_i,
     tdi_pad_i,
@@ -158,7 +189,38 @@ input \nProc/currentDmaState[3] ;
 input \nProc/currentDmaState[2] ;
 input \nProc/currentDmaState[1] ;
 input \nProc/currentDmaState[0] ;
-input \nProc/intrStatus[1] ;
+input \dmaByteCount[31] ;
+input \dmaByteCount[30] ;
+input \dmaByteCount[29] ;
+input \dmaByteCount[28] ;
+input \dmaByteCount[27] ;
+input \dmaByteCount[26] ;
+input \dmaByteCount[25] ;
+input \dmaByteCount[24] ;
+input \dmaByteCount[23] ;
+input \dmaByteCount[22] ;
+input \dmaByteCount[21] ;
+input \dmaByteCount[20] ;
+input \dmaByteCount[19] ;
+input \dmaByteCount[18] ;
+input \dmaByteCount[17] ;
+input \dmaByteCount[16] ;
+input \dmaByteCount[15] ;
+input \dmaByteCount[14] ;
+input \dmaByteCount[13] ;
+input \dmaByteCount[12] ;
+input \dmaByteCount[11] ;
+input \dmaByteCount[10] ;
+input \dmaByteCount[9] ;
+input \dmaByteCount[8] ;
+input \dmaByteCount[7] ;
+input \dmaByteCount[6] ;
+input \dmaByteCount[5] ;
+input \dmaByteCount[4] ;
+input \dmaByteCount[3] ;
+input \dmaByteCount[2] ;
+input \dmaByteCount[1] ;
+input \dmaByteCount[0] ;
 input tms_pad_i;
 input tck_pad_i;
 input tdi_pad_i;
@@ -240,7 +302,38 @@ wire \nProc/currentDmaState[3] ;
 wire \nProc/currentDmaState[2] ;
 wire \nProc/currentDmaState[1] ;
 wire \nProc/currentDmaState[0] ;
-wire \nProc/intrStatus[1] ;
+wire \dmaByteCount[31] ;
+wire \dmaByteCount[30] ;
+wire \dmaByteCount[29] ;
+wire \dmaByteCount[28] ;
+wire \dmaByteCount[27] ;
+wire \dmaByteCount[26] ;
+wire \dmaByteCount[25] ;
+wire \dmaByteCount[24] ;
+wire \dmaByteCount[23] ;
+wire \dmaByteCount[22] ;
+wire \dmaByteCount[21] ;
+wire \dmaByteCount[20] ;
+wire \dmaByteCount[19] ;
+wire \dmaByteCount[18] ;
+wire \dmaByteCount[17] ;
+wire \dmaByteCount[16] ;
+wire \dmaByteCount[15] ;
+wire \dmaByteCount[14] ;
+wire \dmaByteCount[13] ;
+wire \dmaByteCount[12] ;
+wire \dmaByteCount[11] ;
+wire \dmaByteCount[10] ;
+wire \dmaByteCount[9] ;
+wire \dmaByteCount[8] ;
+wire \dmaByteCount[7] ;
+wire \dmaByteCount[6] ;
+wire \dmaByteCount[5] ;
+wire \dmaByteCount[4] ;
+wire \dmaByteCount[3] ;
+wire \dmaByteCount[2] ;
+wire \dmaByteCount[1] ;
+wire \dmaByteCount[0] ;
 wire tms_pad_i;
 wire tck_pad_i;
 wire tdi_pad_i;
@@ -314,7 +407,7 @@ gw_con_top  u_icon_top(
 
 ao_top_0  u_la0_top(
     .control(control0[9:0]),
-    .trig0_i(\nProc/intrStatus[1] ),
+    .trig0_i({\dmaByteCount[31] ,\dmaByteCount[30] ,\dmaByteCount[29] ,\dmaByteCount[28] ,\dmaByteCount[27] ,\dmaByteCount[26] ,\dmaByteCount[25] ,\dmaByteCount[24] ,\dmaByteCount[23] ,\dmaByteCount[22] ,\dmaByteCount[21] ,\dmaByteCount[20] ,\dmaByteCount[19] ,\dmaByteCount[18] ,\dmaByteCount[17] ,\dmaByteCount[16] ,\dmaByteCount[15] ,\dmaByteCount[14] ,\dmaByteCount[13] ,\dmaByteCount[12] ,\dmaByteCount[11] ,\dmaByteCount[10] ,\dmaByteCount[9] ,\dmaByteCount[8] ,\dmaByteCount[7] ,\dmaByteCount[6] ,\dmaByteCount[5] ,\dmaByteCount[4] ,\dmaByteCount[3] ,\dmaByteCount[2] ,\dmaByteCount[1] ,\dmaByteCount[0] }),
     .data_i({\nProc/dmaByteCount[31] ,\nProc/dmaByteCount[30] ,\nProc/dmaByteCount[29] ,\nProc/dmaByteCount[28] ,\nProc/dmaByteCount[27] ,\nProc/dmaByteCount[26] ,\nProc/dmaByteCount[25] ,\nProc/dmaByteCount[24] ,\nProc/dmaByteCount[23] ,\nProc/dmaByteCount[22] ,\nProc/dmaByteCount[21] ,\nProc/dmaByteCount[20] ,\nProc/dmaByteCount[19] ,\nProc/dmaByteCount[18] ,\nProc/dmaByteCount[17] ,\nProc/dmaByteCount[16] ,\nProc/dmaByteCount[15] ,\nProc/dmaByteCount[14] ,\nProc/dmaByteCount[13] ,\nProc/dmaByteCount[12] ,\nProc/dmaByteCount[11] ,\nProc/dmaByteCount[10] ,\nProc/dmaByteCount[9] ,\nProc/dmaByteCount[8] ,\nProc/dmaByteCount[7] ,\nProc/dmaByteCount[6] ,\nProc/dmaByteCount[5] ,\nProc/dmaByteCount[4] ,\nProc/dmaByteCount[3] ,\nProc/dmaByteCount[2] ,\nProc/dmaByteCount[1] ,\nProc/dmaByteCount[0] ,HACK,\nProc/ack_sampled ,dsp_cs_in,dsp_rd,dsp_wr,\nProc/cs_sync ,dma_clk,\dmaDataOut[31] ,\dmaDataOut[30] ,\dmaDataOut[29] ,\dmaDataOut[28] ,\dmaDataOut[27] ,\dmaDataOut[26] ,\dmaDataOut[25] ,\dmaDataOut[24] ,\dmaDataOut[23] ,\dmaDataOut[22] ,\dmaDataOut[21] ,\dmaDataOut[20] ,\dmaDataOut[19] ,\dmaDataOut[18] ,\dmaDataOut[17] ,\dmaDataOut[16] ,\dmaDataOut[15] ,\dmaDataOut[14] ,\dmaDataOut[13] ,\dmaDataOut[12] ,\dmaDataOut[11] ,\dmaDataOut[10] ,\dmaDataOut[9] ,\dmaDataOut[8] ,\dmaDataOut[7] ,\dmaDataOut[6] ,\dmaDataOut[5] ,\dmaDataOut[4] ,\dmaDataOut[3] ,\dmaDataOut[2] ,\dmaDataOut[1] ,\dmaDataOut[0] ,HDRQ,\nProc/currentDmaState[3] ,\nProc/currentDmaState[2] ,\nProc/currentDmaState[1] ,\nProc/currentDmaState[0] }),
     .clk_i(dma_clk)
 );

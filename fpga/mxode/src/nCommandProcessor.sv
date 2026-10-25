@@ -20,12 +20,17 @@ module nCommandProcessor(
 		output wire dma_has_bus,
 		output reg [31:0] dmaDataOut,
 		input wire [7:0] sdDataIn,
-		input wire [10:0] sdAddrIn,
+		input wire [15:0] sdAddrIn,
 		input wire sdWr,
 		output reg readSectorStart,
         input wire readSectorDone,
 		output reg [31:0] readSectorLba,
-		input wire sd_busy
+        output reg [31:0] sdReadCount,
+
+		input wire sd_busy,
+
+        input wire [31:0] dmaByteCount,
+        output reg sdReset
 
 );
 import ps2_types_pkg::*;
@@ -136,7 +141,7 @@ reg dma_start;
 // Effective BRAM write address
 wire [14:0] bramWriteAddr = sdAddrIn + sectorOffset;
 always @(posedge clk) begin 
-		
+	sdReset <= 1'b0;
 	readSectorStart <= 0;
 	if (en & !ack_sync) begin
 		if(wrRising) begin 
@@ -160,6 +165,7 @@ always @(posedge clk) begin
 							if(!readScheduled) begin
 								readScheduled <= 1;
 								readSectorCount <= 1;
+                                sdReadCount <= 1;
 								readSectorLba <= {
 									 nCommandParams[3],
 									 nCommandParams[2],
@@ -194,10 +200,14 @@ always @(posedge clk) begin
 							key_xor <= 0;
 							discStatus <= 8'h0a;
 						end
+                        8'hD0: begin //sd reset
+                            sdReset <= 1'b1;
+
+                        end
                         8'hDD: begin //proper sd reader! 
                             if(!readScheduled) begin 
                                 readScheduled <= 1;
-								readSectorCount <= {
+								sdReadCount <= {
                                     nCommandParams[7],
                                     nCommandParams[6],
                                     nCommandParams[5],
@@ -209,12 +219,7 @@ always @(posedge clk) begin
 									 nCommandParams[1],
 									 nCommandParams[0]
 								};
-                                readSectorsRemaining <= {
-                                    nCommandParams[7],
-                                    nCommandParams[6],
-                                    nCommandParams[5],
-                                    nCommandParams[4]
-                                };
+                              
                                 sectorOffset <= 0;
 								activeNCommand <= dataIn;
 								intrStatus[0] <= 1;
@@ -249,6 +254,10 @@ always @(posedge clk) begin
 		//if (dma_ack_falling) dma_req <= 1'b0;
 
 	if (readSectorDone) begin
+        intrStatus[1] <= 1'b1; // Command Complete
+        dma_start <= 1'b1;
+        readScheduled <= 1'b0;
+    end /*
         if (readSectorsRemaining > 1) begin
             readSectorsRemaining <= readSectorsRemaining - 1'b1;
             readSectorLba <= readSectorLba + 1'b1;
@@ -260,21 +269,23 @@ always @(posedge clk) begin
             dma_start <= 1'b1;
             readScheduled <= 1'b0;
         end
-    end
+    end*/
     if (dma_busy_sync) dma_start <= 1'b0;
    // if (dma_transfer_done_sync)
      //   dma_start <= 1'b0;
 	
 	
 end
-logic [31:0] dmaByteCount;
+//wire [31:0] dmaByteCount;
+
+
 
 Gowin_SDPB disk_buffer(
         .dout(dmaDataOut), //output [31:0] dout
         .clka(clk), //input clka
         .cea(sdWr), //input cea
         .reseta(0), //input reseta
-        .clkb(dma_clk), //input clkb
+        .clkb(~dma_clk), //input clkb
         .ceb(1), //input ceb
         .resetb(0), //input resetb
         .oce(1), //input oce
@@ -346,12 +357,7 @@ always @(posedge dma_clk) begin
 
 
     endcase
-    if (cs_raw & !dma_ack) begin
-        dmaByteCount <= 32'h0;
-    end
-    else begin
-        dmaByteCount <= dmaByteCount + 1'b1;
-    end
+  
 end
 /*
 always_comb begin 
