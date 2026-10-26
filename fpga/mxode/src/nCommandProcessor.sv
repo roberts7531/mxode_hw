@@ -29,8 +29,7 @@ module nCommandProcessor(
 
 		input wire sd_busy,
 
-        input wire [31:0] dmaByteCount,
-        output reg sdReset
+        input wire [31:0] dmaByteCount
 
 );
 import ps2_types_pkg::*;
@@ -141,7 +140,6 @@ reg dma_start;
 // Effective BRAM write address
 wire [14:0] bramWriteAddr = sdAddrIn + sectorOffset;
 always @(posedge clk) begin 
-	sdReset <= 1'b0;
 	readSectorStart <= 0;
 	if (en & !ack_sync) begin
 		if(wrRising) begin 
@@ -200,10 +198,7 @@ always @(posedge clk) begin
 							key_xor <= 0;
 							discStatus <= 8'h0a;
 						end
-                        8'hD0: begin //sd reset
-                            sdReset <= 1'b1;
-
-                        end
+                       
                         8'hDD: begin //proper sd reader! 
                             if(!readScheduled) begin 
                                 readScheduled <= 1;

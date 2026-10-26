@@ -14,7 +14,10 @@ module sCommandProcessor(
     input wire scopro_sck,
     input wire scopro_mosi,
     output wire scopro_miso,
-    output wire scopro_irq
+    output wire scopro_irq,
+    
+    input wire sdReady,
+    output logic sdReset
 );
 reg unknownCmd = 1'b0;
 assign error = unknownCmd;
@@ -82,7 +85,7 @@ syncEdgeDetect readSync(
 always @(posedge clk) begin
 	updateSticky <=0;
     spi_request <= 0;
-    
+    sdReset <= 1'b0;
     if (spi_ready) begin
         if (activeSCommand == 8'h41) begin
             for (integer i = 0; i < 19; i = i + 1)
@@ -447,6 +450,21 @@ always @(posedge clk) begin
 							 responseBuffer[0] <= 8'h00;
 							 sComTakenOver <= 1'b1;
 						end
+
+
+                        8'hDE: begin // issue SDCARD reset 
+                            activeSCommand <= dataIn;
+                            responseLength <= 1'b1;
+                            responseBuffer[0] <= 8'h00;
+                            sdReset <= 1'b1;
+                            sComTakenOver <= 1'b1;
+                        end
+                        8'hDF: begin 
+                            activeSCommand <= dataIn;
+                            responseLength <= 1'b1;
+                            responseBuffer[0] <= {7'h0,sdReady};
+                            sComTakenOver <= 1'b1;
+                        end
 					
 					default: begin 
 						activeSCommand <= dataIn;

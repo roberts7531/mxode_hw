@@ -107,7 +107,11 @@ sCommandProcessor sProcInst(
     .scopro_sck,
     .scopro_mosi,
     .scopro_miso,
-    .scopro_irq
+    .scopro_irq,
+
+    .sdReset(sdRst),
+    .sdReady(!sd_busy)
+
 );
 wire [31:0] dmaByteCount;
 dmaCounter dmaCounterInst(
@@ -154,8 +158,7 @@ nCommandProcessor nProc(
 		.readSectorLba(sector_lba),
 		.sd_busy(sd_busy),
         .dmaByteCount,
-        .sdReadCount(sectorCount),
-        .sdReset(sdRst)
+        .sdReadCount(sectorCount)
 
 
 );

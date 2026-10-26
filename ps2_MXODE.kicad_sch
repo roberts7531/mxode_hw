@@ -10684,15 +10684,15 @@
 		)
 		(uuid "21eb0a9e-a7da-4b9a-9aae-0312fdb896f6")
 	)
-	(label "HACK"
-		(at 196.85 -67.31 0)
+	(label "~{CS_OUT}"
+		(at 347.98 3.81 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
-		(uuid "238ae19f-fbeb-416d-8b94-a93f7af3d92f")
+		(uuid "2235d460-c6d8-4b97-a7be-ba3441eece8e")
 	)
 	(label "MCLK"
 		(at 347.98 -36.83 180)
@@ -10804,16 +10804,6 @@
 		)
 		(uuid "32884929-427e-4c60-aff8-f756948c23d2")
 	)
-	(label "~{CS_OUT}"
-		(at 196.85 -69.85 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "32f3f6b2-9b23-4a7d-9f4d-b72c0afcb770")
-	)
 	(label "TDI"
 		(at 408.94 -99.06 0)
 		(effects
@@ -10893,16 +10883,6 @@
 			(justify left bottom)
 		)
 		(uuid "4c28599c-7a8d-4afa-b43c-a908417ec2d6")
-	)
-	(label "HACK"
-		(at 347.98 3.81 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "4e389ec1-f427-404b-ac23-88bcbe9ff49f")
 	)
 	(label "A15"
 		(at 196.85 -151.13 0)
@@ -11044,6 +11024,16 @@
 		)
 		(uuid "6868f2df-dbed-4034-ad3c-d1a872a0c030")
 	)
+	(label "HACK"
+		(at 347.98 1.27 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "688625bd-d761-4114-a2db-848dcce0fa40")
+	)
 	(label "STM_MOSI"
 		(at 129.54 -109.22 0)
 		(effects
@@ -11063,6 +11053,16 @@
 			(justify left bottom)
 		)
 		(uuid "6ee37264-fac4-47d7-8008-dba8a2f586bd")
+	)
+	(label "~{CS_OUT}"
+		(at 196.85 -67.31 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "6f35c5d9-5344-48eb-8be8-4b5109d683a3")
 	)
 	(label "VCCPLLR"
 		(at 408.94 -107.95 0)
@@ -11093,16 +11093,6 @@
 			(justify right bottom)
 		)
 		(uuid "72f31ad2-3177-414b-a1a0-0bb17e8de8ac")
-	)
-	(label "~{CS_OUT}"
-		(at 347.98 1.27 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "74df255c-289c-47cf-bf4b-2b1d3d70003a")
 	)
 	(label "TDO"
 		(at 454.66 -96.52 180)
@@ -11813,6 +11803,16 @@
 			(justify left bottom)
 		)
 		(uuid "f74152c7-5b36-4d48-944d-c7292c37d87c")
+	)
+	(label "HACK"
+		(at 196.85 -69.85 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "f81780ed-1fd2-4573-897a-16b0a45b06fd")
 	)
 	(label "A13"
 		(at 347.98 -110.49 180)
