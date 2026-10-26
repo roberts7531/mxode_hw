@@ -90,6 +90,9 @@ always @(posedge clk) begin
         if (activeSCommand == 8'h41) begin
             for (integer i = 0; i < 19; i = i + 1)
                 responseBuffer[i] <= spi_rx[i + 1];
+        end else if ((activeSCommand == 8'h15) || (activeSCommand == 8'h1A)) begin
+            // These commands return their single data byte without a status prefix.
+            responseBuffer[0] <= spi_rx[1];
         end else begin
             responseBuffer[0] <= spi_error ? 8'h01 : 8'h00;
 
@@ -111,104 +114,74 @@ always @(posedge clk) begin
                 8'h16: begin   // issue Scommand
 					paramWriteIndex <= 0;
 					responseRdIndex <= 0;
+                    activeSCommand <= dataIn;
 					case (dataIn)
-						8'h03: begin 
-							activeSCommand <= 8'h03;
+						8'h03: begin
 							responseLength <= 4;
-							responseBuffer[0] <= 8'h00;
-							responseBuffer[1] <= 8'h02;
-							responseBuffer[2] <= 8'h06;
-							responseBuffer[3] <= 8'h03;
+							spi_request <= 1;
+							spiTransferLen <= 5;
+							spi_tx[0] <= dataIn;
 							sComTakenOver <= 1'b1;
 						end
 						8'h05: begin //updateSticky
-							activeSCommand <= 8'h05;
 							responseLength <= 1;
 							responseBuffer[0] <= 0;
 							sComTakenOver <= 1'b1;
 							updateSticky<= 1;
 						end
 						8'h08: begin 
-							activeSCommand <= 8'h08;
 							responseLength <= 8;
                             spi_request <=1;
-							//spi_busy <= 1;
 							spiTransferLen <= 9;
 							spi_tx[0] <= dataIn;
-							//responseBuffer[0] <= 8'hff;
-							//responseBuffer[1] <= 8'hff;
-							//responseBuffer[2] <= 8'hff;
-							//responseBuffer[3] <= 8'hff;
-							//responseBuffer[4] <= 8'hff;
-							//responseBuffer[5] <= 8'hff;
-							//responseBuffer[6] <= 8'hff;
-							//responseBuffer[7] <= 8'hff;
 							sComTakenOver <= 1'b1;
 						end
 						8'h15: begin
-							activeSCommand <= 8'h15;
 							responseLength <= 1;
-							responseBuffer[0] <= 8'h05;
+							spi_request <= 1;
+							spiTransferLen <= 3;
+							spi_tx[0] <= dataIn;
 							sComTakenOver <= 1'b1;
 						end
 						8'h17: begin
-							 activeSCommand <= 8'h17;
 							 responseLength <= 9;
-							 responseBuffer[0] <= 8'h00;
-							 responseBuffer[1] <= 8'h52;
-							 responseBuffer[2] <= 8'h37;
-							 responseBuffer[3] <= 8'h35;
-							 responseBuffer[4] <= 8'h33;
-							 responseBuffer[5] <= 8'h31;
-							 responseBuffer[6] <= 8'h0a;
-							 responseBuffer[7] <= 8'h00;
-							 responseBuffer[8] <= 8'h00;
-							 
+							 spi_request <= 1;
+							 spiTransferLen <= 10;
+							 spi_tx[0] <= dataIn;
 							 sComTakenOver <= 1'b1;
 						end
 						8'h1A: begin
-							 activeSCommand <= 8'h1A;
 							 responseLength <= 1;
-							 responseBuffer[0] <= 8'h01;
+							 spi_request <= 1;
+							 spiTransferLen <= 3;
+							 spi_tx[0] <= dataIn;
 							 sComTakenOver <= 1'b1;
 						end
 
 						8'h1e: begin
-							activeSCommand <= 8'h1e;
 							responseLength <= 5;
-							responseBuffer[0] <= 8'h00;
-							responseBuffer[1] <= 8'h14;
-							responseBuffer[2] <= 8'h00;
-							responseBuffer[3] <= 8'h00;
-							responseBuffer[4] <= 8'h00;
+							spi_request <= 1;
+							spiTransferLen <= 6;
+							spi_tx[0] <= dataIn;
 							sComTakenOver <= 1'b1;
 						end
 						8'h36: begin
-							activeSCommand <= 8'h36;
 							responseLength <= 15;
-
                             spi_request <=1;
-							//spi_busy <= 1;
 							spiTransferLen <= 16;
 							spi_tx[0] <= dataIn;
                             sComTakenOver <= 1'b1;
 						end
 						8'h37: begin
-							 activeSCommand <= 8'h37;
-							 responseLength <= 9;
-
+							responseLength <= 9;
 							spi_request <=1;
-							//spi_busy <= 1;
 							spiTransferLen <= 10;
 							spi_tx[0] <= dataIn;
-
-							 sComTakenOver <= 1'b1;
+							sComTakenOver <= 1'b1;
 						end
 						
 						8'h40: begin
-							 activeSCommand <= 8'h40;
 							 responseLength <= 1;
-
 							 spi_request <=1;
 							 spiTransferLen <= 5;
 							 spi_tx[0] <= dataIn;
@@ -218,7 +191,6 @@ always @(posedge clk) begin
 							 sComTakenOver <= 1'b1;
 						end
 						8'h41: begin
-							 activeSCommand <= 8'h41;
 							 responseLength <= 16;
 							 spi_request <= 1;
 							 spiTransferLen <= 18;
@@ -226,14 +198,14 @@ always @(posedge clk) begin
 							 sComTakenOver <= 1'b1;
 						end
 						8'h42: begin
-							 activeSCommand <= 8'h42;
 							 responseLength <= 1;
-							 responseBuffer[0] <= 8'h00;
+							 spi_request <= 1;
+							 spiTransferLen <= 2;
+							 spi_tx[0] <= dataIn;
 							 sComTakenOver <= 1'b1;
 						end
 						
 						8'h43: begin
-							 activeSCommand <= 8'h43;
 							 responseLength <= 1;
 							 spi_request <=1;
 							 spiTransferLen <= 2;
@@ -241,25 +213,18 @@ always @(posedge clk) begin
 							 sComTakenOver <= 1'b1;
 						end
 						8'h80: begin 
-							activeSCommand <= dataIn;
 							responseLength <= 1;
 							responseBuffer[0] <= 8'h00;
-
-							 //if (dataIn == 8'h80 || dataIn == 8'h81)
-								//  mg_datatype <= 0;
 							spi_request <=1;
-							//spi_busy <= 1;
 							spiTransferLen <= 2;
 							spi_tx[0] <= dataIn;
 							sComTakenOver <= 1'b1;
 						end
 						8'h82: begin //params hold the challenge 
-							activeSCommand <= dataIn;
-							 responseLength <= 1;
-							 spiTransferLen <= 18;
-							 spi_request<=1;
-							 //spi_busy<=1;
-							 spi_tx[0] <= dataIn;
+							responseLength <= 1;
+							spiTransferLen <= 18;
+							spi_request<=1;
+							spi_tx[0] <= dataIn;
 							 
 							spi_tx[1]  <= paramBuffer[0];
 							spi_tx[2]  <= paramBuffer[1];
@@ -277,16 +242,12 @@ always @(posedge clk) begin
 							spi_tx[14] <= paramBuffer[13];
 							spi_tx[15] <= paramBuffer[14];
 							spi_tx[16]  <= paramBuffer[15];
-														sComTakenOver <= 1;
-
-						
+							sComTakenOver <= 1;
 						end
 						8'h83: begin // params hold nonce
-							activeSCommand <= dataIn;
 							 responseLength <= 1;
 							 spiTransferLen <= 10;
 							 spi_request<=1;
-							 //spi_busy<=1;
 							 spi_tx[0] <= dataIn;
 							 
 							spi_tx[1]  <= paramBuffer[0];
@@ -302,32 +263,25 @@ always @(posedge clk) begin
 						end
 						
 						8'h84: begin
-							 activeSCommand <= 8'h84;
 							 responseLength <= 13;
-							 
 							 spiTransferLen <= 14;
 							 spi_request<=1;
-							 //spi_busy<=1;
 							 spi_tx[0] <= dataIn;
 							 sComTakenOver <= 1'b1;
 						end
 						8'h85: begin
-							 activeSCommand <= 8'h85;
 							 responseLength <= 13;
 							 spiTransferLen <= 14;
 							 spi_request<=1;
-							 //spi_busy<=1;
 							 spi_tx[0] <= dataIn;
 							 sComTakenOver <= 1'b1;
 						end
 						8'h86: begin 
-							activeSCommand <= 8'h86;
 							responseLength <= 1;
 							spiTransferLen <= 18;
 							spi_request<=1;
-							 //spi_busy<=1;
-							 spi_tx[0] <= dataIn;
-							 spi_tx[1]  <= paramBuffer[0];
+							spi_tx[0] <= dataIn;
+							spi_tx[1]  <= paramBuffer[0];
 							spi_tx[2]  <= paramBuffer[1];
 							spi_tx[3]  <= paramBuffer[2];
 							spi_tx[4]  <= paramBuffer[3];
@@ -343,15 +297,13 @@ always @(posedge clk) begin
 							spi_tx[14] <= paramBuffer[13];
 							spi_tx[15] <= paramBuffer[14];
 							spi_tx[16]  <= paramBuffer[15];
-							 sComTakenOver <= 1'b1;
+							sComTakenOver <= 1'b1;
 						end
 						8'h87: begin
-							activeSCommand <= dataIn;
-							 responseLength <= 1;
-							 spiTransferLen <= 10;
-							 spi_request<=1;
-							 //spi_busy<=1;
-							 spi_tx[0] <= dataIn;
+							responseLength <= 1;
+							spiTransferLen <= 10;
+							spi_request<=1;
+							spi_tx[0] <= dataIn;
 							 
 							spi_tx[1]  <= paramBuffer[0];
 							spi_tx[2]  <= paramBuffer[1];
@@ -365,124 +317,67 @@ always @(posedge clk) begin
 							 
 						end
 						
-						8'h88: begin 
-							activeSCommand <= dataIn;
+						8'h88: begin
 							responseLength <= 1;
-							responseBuffer[0] <= 8'h00;
-
-							 //if (dataIn == 8'h80 || dataIn == 8'h81)
-								//  mg_datatype <= 0;
-							//spi_request <=1;
-							//spi_busy <= 1;
-							//spiTransferLen <= 2;
-							//spi_tx[0] <= dataIn;
+							spi_request <= 1;
+							spiTransferLen <= 2;
+							spi_tx[0] <= dataIn;
 							sComTakenOver <= 1'b1;
-							
 						end
 						
 						8'h81: begin
-							 
-							 activeSCommand <= dataIn;
 							 responseLength <= 1;
-							 responseBuffer[0] <= 8'h00;
-
-							 //if (dataIn == 8'h80 || dataIn == 8'h81)
-								//  mg_datatype <= 0;
-
+							 spi_request <= 1;
+							 spiTransferLen <= 2;
+							 spi_tx[0] <= dataIn;
 							 sComTakenOver <= 1'b1;
 						end
-						
-						
 
-					
-						
 						8'h8D: begin
-							 activeSCommand <= dataIn;
 							 responseLength <= 1;
-
-							 //if (mg_size + paramWriteIndex > mg_maxsize) begin
-								//  responseBuffer[0] <= 8'h80;
-							 //end else begin
-								  //for (integer i = 0; i < 16; i = i + 1) begin
-										//if (i < paramWriteIndex)
-									//		 mg_buffer[mg_size + i] <= paramBuffer[i];
-								  //end
-
-								//  mg_size <= mg_size + paramWriteIndex;
-								  responseBuffer[0] <= 8'h00;
-							 //end
-
+							 spi_request <= 1;
+							 spiTransferLen <= 2;
+							 spi_tx[0] <= dataIn;
 							 sComTakenOver <= 1'b1;
 						end
 												
 						8'h8E: begin
-							 activeSCommand <= 8'h8E;
-							 responseLength <= 16;//(mg_size < 16) ? mg_size : 16;
-							 responseBuffer[0] <= 8'h00;
-							 responseBuffer[1] <= 8'h00;
-							 responseBuffer[2] <= 8'h00;
-							 responseBuffer[3] <= 8'h00;
-							 responseBuffer[4] <= 8'h00;
-							 responseBuffer[5] <= 8'h00;
-							 responseBuffer[6] <= 8'h00;
-							 responseBuffer[7] <= 8'h00;
-							 responseBuffer[8] <= 8'h00;
-							 responseBuffer[9] <= 8'h00;
-							 responseBuffer[10] <= 8'h00;
-							 responseBuffer[11] <= 8'h00;
-							 responseBuffer[12] <= 8'h00;
-							 responseBuffer[13] <= 8'h00;
-							 responseBuffer[14] <= 8'h00;
-							 responseBuffer[15] <= 8'h00;
-							 
-
-							 //for (integer i = 0; i < 1008; i = i + 1)
-								//  mg_buffer[i] <= mg_buffer[i + 16];
-
-							 //mg_size <= (mg_size < 16) ? 0 : mg_size - 16;
-
+							 responseLength <= 16;
+							 spi_request <= 1;
+							 spiTransferLen <= 17;
+							 spi_tx[0] <= dataIn;
 							 sComTakenOver <= 1'b1;
 						end
 
 						8'h8F: begin
-							 activeSCommand <= 8'h8F;
 							 responseLength <= 1;
-							 responseBuffer[0] <= 8'h00;
+							 spi_request <= 1;
+							 spiTransferLen <= 2;
+							 spi_tx[0] <= dataIn;
 							 sComTakenOver <= 1'b1;
 						end
 
 
                         8'hDE: begin // issue SDCARD reset 
-                            activeSCommand <= dataIn;
                             responseLength <= 1'b1;
                             responseBuffer[0] <= 8'h00;
                             sdReset <= 1'b1;
                             sComTakenOver <= 1'b1;
                         end
                         8'hDF: begin 
-                            activeSCommand <= dataIn;
                             responseLength <= 1'b1;
                             responseBuffer[0] <= {7'h0,sdReady};
                             sComTakenOver <= 1'b1;
                         end
 					
-					default: begin 
-						activeSCommand <= dataIn;
-						responseLength <= 1;
-						spiTransferLen <= 2;
-						spi_request<=1;
-                        unknownCmd <= 1;
-                        spi_tx[0] <= dataIn;
-						sComTakenOver <= 1'b0;
-
-					/*
-							commandThatCausedErr <=dataIn;
-							errorState <= 1;
-							responseLength <= 0;
-							activeSCommand <= 0;
-							sComTakenOver <= 1'b0;
-					*/
-					end
+                        default: begin 
+                            responseLength <= 1;
+                            spiTransferLen <= 2;
+                            spi_request<=1;
+                            unknownCmd <= 1;
+                            spi_tx[0] <= dataIn;
+                            sComTakenOver <= 1'b0;
+                        end
 					endcase
 
             end

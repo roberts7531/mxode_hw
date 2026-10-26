@@ -4,26 +4,26 @@
     <Version>beta</Version>
     <Device id="GW2AR-18" package="QFN88" speed="8" partNumber="GW2AR-LV18QN88C8/I7"/>
     <FileList>
-        <File path="C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\mxode_top.sv" type="verilog"/>
-        <File path="C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\stm32_interface.sv" type="verilog"/>
-        <File path="C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\syncEdgeDetect.sv" type="verilog"/>
-        <File path="C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\sCommandProcessor.sv" type="verilog"/>
-        <File path="C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\sd_reader.sv" type="verilog"/>
-        <File path="C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\sdcmd_ctrl.sv" type="verilog"/>
-        <File path="C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\nCommandProcessor.sv" type="verilog"/>
-        <File path="C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\nCommandTypes.sv" type="verilog"/>
-        <File path="C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\gowin_sdpb\gowin_sdpb.v" type="verilog"/>
-        <File path="C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\gowin_rpll\gowin_rpll.v" type="verilog"/>
-        <File path="C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\dmaCounter.sv" type="verilog"/>
+        <File path="/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/dmaCounter.sv" type="verilog"/>
+        <File path="/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/gowin_rpll/gowin_rpll.v" type="verilog"/>
+        <File path="/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/gowin_sdpb/gowin_sdpb.v" type="verilog"/>
+        <File path="/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/mxode_top.sv" type="verilog"/>
+        <File path="/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/nCommandProcessor.sv" type="verilog"/>
+        <File path="/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/nCommandTypes.sv" type="verilog"/>
+        <File path="/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/sCommandProcessor.sv" type="verilog"/>
+        <File path="/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/sd_reader.sv" type="verilog"/>
+        <File path="/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/sdcmd_ctrl.sv" type="verilog"/>
+        <File path="/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/stm32_interface.sv" type="verilog"/>
+        <File path="/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/syncEdgeDetect.sv" type="verilog"/>
     </FileList>
     <OptionList>
         <Option type="disable_insert_pad" value="0"/>
         <Option type="global_freq" value="100.000"/>
         <Option type="looplimit" value="2000"/>
-        <Option type="output_file" value="C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\impl\gwsynthesis\mxode.vg"/>
+        <Option type="output_file" value="/home/roberts7531/ai/ps2_MXODE/fpga/mxode/impl/gwsynthesis/mxode.vg"/>
         <Option type="print_all_synthesis_warning" value="0"/>
         <Option type="ram_rw_check" value="0"/>
-        <Option type="vcc" value="1.0"/>
+        <Option type="top_module" value="mxode_top"/>
         <Option type="verilog_language" value="sysv-2017"/>
         <Option type="vhdl_language" value="vhdl-1993"/>
     </OptionList>

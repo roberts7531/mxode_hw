@@ -31,14 +31,12 @@ table.detail_table th.label {  min-width: 8%; width: 8%; }
 <div id="catalog">
 <ul>
 <li><a href="#Message" style=" font-size: 16px;">Power Messages</a>
-<ul>
-<li><a href="#Configure_Info" style=" font-size: 14px;">Configure Information</a></li>
-</ul>
 </li>
 <li><a href="#Summary" style=" font-size: 16px;">Power Summary</a>
 <ul>
 <li><a href="#Power_Info" style=" font-size: 14px;">Power Information</a></li>
 <li><a href="#Thermal_Info" style=" font-size: 14px;">Thermal Information</a></li>
+<li><a href="#Configure_Info" style=" font-size: 14px;">Configure Information</a></li>
 <li><a href="#Supply_Summary" style=" font-size: 14px;">Supply Information</a></li>
 </ul>
 </li>
@@ -61,19 +59,19 @@ table.detail_table th.label {  min-width: 8%; width: 8%; }
 </tr>
 <tr>
 <td class="label">Design File</td>
-<td>C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\impl\gwsynthesis\mxode.vg</td>
+<td>/home/roberts7531/ai/ps2_MXODE/fpga/mxode/impl/gwsynthesis/mxode.vg</td>
 </tr>
 <tr>
 <td class="label">Physical Constraints File</td>
-<td>C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\mxode.cst</td>
+<td>/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/mxode.cst</td>
 </tr>
 <tr>
 <td class="label">Timing Constraints File</td>
-<td>C:\Users\Roberts\Documents\ps2_MXODE\fpga\mxode\src\mxode.sdc</td>
+<td>/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/mxode.sdc</td>
 </tr>
 <tr>
 <td class="label">Tool Version</td>
-<td>V1.9.12 (64-bit)</td>
+<td>V1.9.9.01</td>
 </tr>
 <tr>
 <td class="label">Part Number</td>
@@ -85,39 +83,81 @@ table.detail_table th.label {  min-width: 8%; width: 8%; }
 </tr>
 <tr>
 <td class="label">Created Time</td>
-<td>Mon Oct 26 00:29:01 2026
+<td>Mon Oct 26 22:22:48 2026
 </td>
 </tr>
 <tr>
 <td class="label">Legal Announcement</td>
-<td>Copyright (C)2014-2025 Gowin Semiconductor Corporation. All rights reserved.</td>
+<td>Copyright (C)2014-2024 Gowin Semiconductor Corporation. All rights reserved.</td>
+</tr>
+</table>
+<h1><a name="Summary">Power Summary</a></h1>
+<h2><a name="Power_Info">Power Information:</a></h2>
+<table class="summary_table">
+<tr>
+<td class="label">Total Power (mW)</td>
+<td>256.040</td>
+</tr>
+<tr>
+<td class="label">Quiescent Power (mW)</td>
+<td>93.232</td>
+</tr>
+<tr>
+<td class="label">Dynamic Power (mW)</td>
+<td>162.808</td>
+</tr>
+</table>
+<h2><a name="Thermal_Info">Thermal Information:</a></h2>
+<table class="summary_table">
+<tr>
+<td class="label">Junction Temperature</td>
+<td>32.640</td>
+</tr>
+<tr>
+<td class="label">Theta JA</td>
+<td>29.840</td>
+</tr>
+<tr>
+<td class="label">Max Allowed Ambient Temperature</td>
+<td>77.360</td>
 </tr>
 </table>
 <h2><a name="Configure_Info">Configure Information:</a></h2>
 <table class="summary_table">
 <tr>
-<td class="label">Grade</td>
-<td>Commercial</td>
+<td class="label">Default IO Toggle Rate</td>
+<td>0.125</td>
+</tr>
+<td class="label">Default Remain Toggle Rate</td>
+<td>0.125</td>
 </tr>
 <tr>
-<td class="label">Process</td>
-<td>Typical</td>
+<td class="label">Use Vectorless Estimation</td>
+<td>false</td>
 </tr>
 <tr>
-<td class="label">Ambient Temperature</td>
-<td>25.000
+<td class="label">Filter Glitches</td>
+<td>false</td>
+</tr>
+<tr>
+<td class="label">Related Vcd File</td>
+<td></td>
+</tr>
+<tr>
+<td class="label">Related Saif File</td>
+<td></td>
 </tr>
 <tr>
 <td class="label">Use Custom Theta JA</td>
 <td>false</td>
 </tr>
 <tr>
-<td class="label">Heat Sink</td>
-<td>None</td>
-</tr>
-<tr>
 <td class="label">Air Flow</td>
 <td>LFM_0</td>
+</tr>
+<tr>
+<td class="label">Heat Sink</td>
+<td>None</td>
 </tr>
 <tr>
 <td class="label">Use Custom Theta SA</td>
@@ -132,55 +172,8 @@ table.detail_table th.label {  min-width: 8%; width: 8%; }
 <td>false</td>
 </tr>
 <tr>
-<td class="label">Related Vcd File</td>
-<td></td>
-</tr>
-<tr>
-<td class="label">Related Saif File</td>
-<td></td>
-</tr>
-<tr>
-<td class="label">Filter Glitches</td>
-<td>false</td>
-</tr>
-<tr>
-<td class="label">Default IO Toggle Rate</td>
-<td>0.125</td>
-</tr>
-<tr>
-<td class="label">Default Remain Toggle Rate</td>
-<td>0.125</td>
-</tr>
-</table>
-<h1><a name="Summary">Power Summary</a></h1>
-<h2><a name="Power_Info">Power Information:</a></h2>
-<table class="summary_table">
-<tr>
-<td class="label">Total Power (mW)</td>
-<td>287.652</td>
-</tr>
-<tr>
-<td class="label">Quiescent Power (mW)</td>
-<td>122.808</td>
-</tr>
-<tr>
-<td class="label">Dynamic Power (mW)</td>
-<td>164.843</td>
-</tr>
-</table>
-<h2><a name="Thermal_Info">Thermal Information:</a></h2>
-<table class="summary_table">
-<tr>
-<td class="label">Junction Temperature</td>
-<td>33.584</td>
-</tr>
-<tr>
-<td class="label">Theta JA</td>
-<td>29.840</td>
-</tr>
-<tr>
-<td class="label">Max Allowed Ambient Temperature</td>
-<td>76.416</td>
+<td class="label">Ambient Temperature</td>
+<td>25.000
 </tr>
 </table>
 <h2><a name="Supply_Summary">Supply Information:</a></h2>
@@ -195,16 +188,16 @@ table.detail_table th.label {  min-width: 8%; width: 8%; }
 <tr>
 <td>VCC</td>
 <td>1.000</td>
-<td>148.246</td>
-<td>70.003</td>
-<td>218.248</td>
+<td>148.222</td>
+<td>61.517</td>
+<td>209.739</td>
 </tr>
 <tr>
 <td>VCCX</td>
-<td>3.300</td>
+<td>2.500</td>
 <td>2.515</td>
-<td>15.000</td>
-<td>57.799</td>
+<td>11.364</td>
+<td>34.696</td>
 </tr>
 <tr>
 <td>VCCIO33</td>
@@ -225,14 +218,14 @@ table.detail_table th.label {  min-width: 8%; width: 8%; }
 </tr>
 <tr>
 <td>Logic</td>
-<td>2.019</td>
+<td>1.993</td>
 <td>NA</td>
-<td>10.567</td>
+<td>10.598</td>
 </tr>
 <tr>
 <td>IO</td>
-<td>29.917
-<td>10.805
+<td>26.510
+<td>9.409
 <td>8.609
 </tr>
 <tr>
@@ -257,8 +250,8 @@ table.detail_table th.label {  min-width: 8%; width: 8%; }
 </tr>
 <tr>
 <td>mxode_top</td>
-<td>145.699</td>
-<td>145.699(145.572)</td>
+<td>145.673</td>
+<td>145.673(145.528)</td>
 <tr>
 <td>mxode_top/dmaCounterInst/</td>
 <td>0.035</td>
@@ -270,7 +263,7 @@ table.detail_table th.label {  min-width: 8%; width: 8%; }
 <tr>
 <td>mxode_top/nProc/</td>
 <td>134.468</td>
-<td>134.468(134.300)</td>
+<td>134.468(134.301)</td>
 <tr>
 <td>mxode_top/nProc/disk_buffer/</td>
 <td>134.297</td>
@@ -292,17 +285,21 @@ table.detail_table th.label {  min-width: 8%; width: 8%; }
 <td>0.000</td>
 <td>0.000(0.000)</td>
 <tr>
+<td>mxode_top/nProc/wrSync/</td>
+<td>0.000</td>
+<td>0.000(0.000)</td>
+<tr>
 <td>mxode_top/sProcInst/</td>
-<td>0.853</td>
-<td>0.853(0.321)</td>
+<td>0.807</td>
+<td>0.807(0.318)</td>
 <tr>
 <td>mxode_top/sProcInst/readSync/</td>
 <td>0.001</td>
 <td>0.001(0.000)</td>
 <tr>
 <td>mxode_top/sProcInst/stm32_interface_inst/</td>
-<td>0.319</td>
-<td>0.319(0.003)</td>
+<td>0.317</td>
+<td>0.317(0.003)</td>
 <tr>
 <td>mxode_top/sProcInst/stm32_interface_inst/csSync/</td>
 <td>0.001</td>
@@ -317,16 +314,16 @@ table.detail_table th.label {  min-width: 8%; width: 8%; }
 <td>0.001(0.000)</td>
 <tr>
 <td>mxode_top/sProcInst/writeSync/</td>
-<td>0.001</td>
-<td>0.001(0.000)</td>
+<td>0.000</td>
+<td>0.000(0.000)</td>
 <tr>
 <td>mxode_top/sd_reader_inst/</td>
-<td>0.802</td>
-<td>0.802(0.287)</td>
+<td>0.803</td>
+<td>0.803(0.289)</td>
 <tr>
 <td>mxode_top/sd_reader_inst/sdcmd_ctrl_i/</td>
-<td>0.287</td>
-<td>0.287(0.000)</td>
+<td>0.289</td>
+<td>0.289(0.000)</td>
 </table>
 <h2><a name="By_Clock_Domain">Power By Clock Domain:</a></h2>
 <table class="detail_table">
@@ -338,7 +335,7 @@ table.detail_table th.label {  min-width: 8%; width: 8%; }
 <tr>
 <td>mainPll/rpll_inst/CLKOUT.default_gen_clk</td>
 <td>90.000</td>
-<td>96.593</td>
+<td>96.567</td>
 </tr>
 <tr>
 <td>NO CLOCK DOMAIN</td>
@@ -348,7 +345,7 @@ table.detail_table th.label {  min-width: 8%; width: 8%; }
 <tr>
 <td>ps2_dma_clock</td>
 <td>36.000</td>
-<td>39.724</td>
+<td>39.726</td>
 </tr>
 <tr>
 <td>main</td>
