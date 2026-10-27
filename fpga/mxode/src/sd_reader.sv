@@ -9,15 +9,19 @@ module sd_reader #(
     inout              sdcmd,
     input  wire [3:0]  sddat,
 
-    output wire [4:0]  card_stat,
-    output reg  [1:0]  card_type,
-
     input  wire        rstart,
     input  wire [31:0] startLba,
     input  wire [31:0] count,
 
     output wire        rbusy,
     output wire        rdone,
+
+    // Sticky hard-error flag for the current multi-block read (timeout on
+    // CMD18, on a data start token, or on CMD12).  Cleared when the next
+    // read is accepted or on reset, so it can be polled as "the last read
+    // did not complete".
+    output reg         rerror,
+    output reg         init_done,      // card identification completed
 
     output reg         outen,
     output reg  [15:0] outaddr,
@@ -29,9 +33,14 @@ localparam [1:0] UNKNOWN = 2'd0,
                  SDv2    = 2'd2,
                  SDHCv2  = 2'd3;
 
-localparam [15:0] FASTCLKDIV = 16'd1 << CLK_DIV;
-localparam [15:0] SLOWCLKDIV =
-    FASTCLKDIV * (SIMULATE ? 16'd2 : 16'd48);
+// SD clock divider values (core clock is 90 MHz).
+// sdcmd_ctrl period = 2*(clkdiv+1)+2 core clocks.
+//   clkdiv = 0      -> 4 core clocks -> 22.5 MHz (default-speed limit is 25 MHz)
+//   clkdiv = 96     -> 196 core clocks -> ~459 kHz (identification)
+//   clkdiv = 0xFFFF -> 2 core clocks -> 45 MHz (SD high-speed mode)
+localparam [15:0] FASTCLKDIV = SIMULATE ? 16'd2 : 16'd0;
+localparam [15:0] SLOWCLKDIV = SIMULATE ? 16'd4 : 16'd96;
+localparam [15:0] HS_DIV     = 16'hFFFF; // 45 MHz, used only after the card accepts high-speed mode
 
 localparam [31:0] TOKEN_TIMEOUT = 32'd1000000;
 
@@ -54,6 +63,7 @@ wire [31:0] resparg;
 reg [15:0] rca = 0;
 reg        sdv1_maybe = 0;
 reg [2:0]  cmd8_cnt = 0;
+reg [1:0]  card_type = UNKNOWN;
 
 reg [31:0] transfer_lba = 0;
 reg [31:0] transfer_count = 0;
@@ -86,11 +96,21 @@ localparam [4:0]
     ST_CMD12_START = 5'd16,
     ST_CMD12_WAIT  = 5'd17,
 
-    ST_READ_DONE   = 5'd18;
+    ST_READ_DONE   = 5'd18,
+
+    ST_HS_CMD       = 5'd19,
+    ST_HS_CMD_WAIT  = 5'd20,
+    ST_HS_DATA_WAIT = 5'd21,
+    ST_HS_DATA      = 5'd22,
+    ST_HS_TAIL      = 5'd23,
+
+    // Silent retry after a missing data token: stop the stream, let the bus
+    // settle, then re-read the whole chunk from its first sector.
+    ST_RETRY_START = 5'd24,
+    ST_RETRY_WAIT  = 5'd25,
+    ST_RETRY_IDLE  = 5'd26;
 
 reg [4:0] state = ST_CMD0;
-
-assign card_stat = state;
 
 assign rbusy = (state != ST_READY &&
                 state != ST_READ_DONE);
@@ -107,10 +127,25 @@ reg [31:0] token_wait = 0;
 reg [9:0]  nibble_count = 0;
 reg [7:0]  tail_count = 0;
 
-reg [8:0]  block_byte_idx = 0;
+// CMD6 (SWITCH_FUNC) status-block capture
+reg [9:0]  hs_nibble = 0;
+reg [8:0]  hs_byte_idx = 0;
+reg [3:0]  hs_hi = 0;
+reg [7:0]  hs_byte13 = 0;
+reg [7:0]  hs_byte16 = 0;
+reg [7:0]  hs_tail_count = 0;
+reg [31:0] hs_token_wait = 0;
+
 reg [31:0] byte_addr = 0;
 
-wire sd_rising = !sdclkl && sdclk;
+// Silent retry-on-token-timeout bookkeeping.
+reg [1:0]  retry_count = 0;
+reg [7:0]  retry_idle = 0;
+reg [15:0] retry_timeout = 0;
+
+// All data/token sampling happens on the SD clock rising edge, matching the
+// command response path in sdcmd_ctrl.
+wire sd_rising = sdclk_sample;
 
 // ------------------------------------------------------------
 // Command controller instance
@@ -120,6 +155,7 @@ sdcmd_ctrl sdcmd_ctrl_i (
     .rstn     (rstn),
     .clk      (clk),
     .sdclk    (sdclk),
+    .sdclk_sample(sdclk_sample),
     .sdcmd    (sdcmd),
     .clkdiv   (clkdiv),
     .start    (start),
@@ -180,8 +216,22 @@ always @(posedge clk or negedge rstn) begin
         token_wait     <= 0;
         nibble_count   <= 0;
         tail_count     <= 0;
-        block_byte_idx <= 0;
         byte_addr      <= 0;
+
+        retry_count    <= 0;
+        retry_idle     <= 0;
+        retry_timeout  <= 0;
+        init_done      <= 0;
+
+        hs_nibble      <= 0;
+        hs_byte_idx    <= 0;
+        hs_hi          <= 0;
+        hs_byte13      <= 0;
+        hs_byte16      <= 0;
+        hs_tail_count  <= 0;
+        hs_token_wait  <= 0;
+
+        rerror         <= 1'b0;
 
     end else begin
 
@@ -301,8 +351,101 @@ always @(posedge clk or negedge rstn) begin
                 set_cmd(1, SIMULATE ? 512 : 64000,
                         16, 32'h00000200);
             end else if (done) begin
-                if (!timeout && !syntaxe)
+                if (!timeout && !syntaxe) begin
+                    // Identification is complete: the card is selected and its
+                    // block length is set, so a healthy idle link can be reused
+                    // by a driver reload instead of being reset.
+                    init_done <= 1'b1;
+
+                    // SDv1 cards do not implement CMD6.
+                    if (card_type == SDv1)
+                        state <= ST_READY;
+                    else
+                        state <= ST_HS_CMD;
+                end
+            end
+        end
+
+        // ====================================================
+        // CMD6: select high-speed mode (50 MHz timing mode)
+        // ====================================================
+
+        ST_HS_CMD: begin
+            if (!busy) begin
+                // mode=1, all groups 0xF (no change), group 1 = 1 (high speed)
+                set_cmd(1, 16, 6, 32'h80FFFFF1);
+                state <= ST_HS_CMD_WAIT;
+            end
+        end
+
+        ST_HS_CMD_WAIT: begin
+            if (done) begin
+                if (!timeout && !syntaxe) begin
+                    hs_nibble     <= 0;
+                    hs_byte_idx   <= 0;
+                    hs_hi         <= 0;
+                    hs_byte13     <= 0;
+                    hs_byte16     <= 0;
+                    hs_tail_count <= 0;
+                    hs_token_wait <= 0;
+                    state <= ST_HS_DATA_WAIT;
+                end else begin
+                    // No CMD6 support: stay at the default-speed clock.
                     state <= ST_READY;
+                end
+            end
+        end
+
+        ST_HS_DATA_WAIT: begin
+            if (sd_rising) begin
+                if (sddat == 4'b0000) begin
+                    hs_token_wait <= 0;
+                    hs_nibble     <= 0;
+                    hs_byte_idx   <= 0;
+                    hs_hi         <= 0;
+                    state <= ST_HS_DATA;
+                end else if (hs_token_wait >= TOKEN_TIMEOUT) begin
+                    state <= ST_READY;
+                end else begin
+                    hs_token_wait <= hs_token_wait + 1'b1;
+                end
+            end
+        end
+
+        ST_HS_DATA: begin
+            if (sd_rising) begin
+                if (!hs_nibble[0]) begin
+                    hs_hi <= sddat;
+                end else begin
+                    if (hs_byte_idx == 13)
+                        hs_byte13 <= {hs_hi, sddat};
+                    if (hs_byte_idx == 16)
+                        hs_byte16 <= {hs_hi, sddat};
+
+                    hs_byte_idx <= hs_byte_idx + 1'b1;
+                end
+
+                if (hs_nibble == 10'd127) begin
+                    hs_nibble <= 0;
+                    state <= ST_HS_TAIL;
+                end else begin
+                    hs_nibble <= hs_nibble + 1'b1;
+                end
+            end
+        end
+
+        ST_HS_TAIL: begin
+            if (sd_rising) begin
+                if (hs_tail_count >= 8'd17) begin
+                    // byte 13 bit 1: function 1 (high speed) is supported in group 1
+                    // byte 16 bits 3:0: currently selected group 1 function (1 = high speed)
+                    if (hs_byte13[1] && (hs_byte16[3:0] == 4'h1))
+                        clkdiv <= HS_DIV;
+
+                    state <= ST_READY;
+                end else begin
+                    hs_tail_count <= hs_tail_count + 1'b1;
+                end
             end
         end
 
@@ -317,6 +460,11 @@ always @(posedge clk or negedge rstn) begin
 
                 transfer_count <= count;
                 sectors_done <= 0;
+                rerror       <= 1'b0;
+
+                retry_count   <= 0;
+                retry_idle    <= 0;
+                retry_timeout <= 0;
 
                 byte_addr <= 0;
                 outaddr <= 0;
@@ -324,10 +472,10 @@ always @(posedge clk or negedge rstn) begin
                 token_wait <= 0;
                 nibble_count <= 0;
                 tail_count <= 0;
-                block_byte_idx <= 0;
 
                 state <= ST_CMD18_START;
             end else if (rstart && count == 0) begin
+                rerror <= 1'b0;
                 state <= ST_READ_DONE;
             end
         end
@@ -338,7 +486,7 @@ always @(posedge clk or negedge rstn) begin
 
         ST_CMD18_START: begin
             if (!busy) begin
-                set_cmd(1, 96, 18, transfer_lba);
+                set_cmd(1, 16, 18, transfer_lba);
                 state <= ST_CMD18_WAIT;
             end
         end
@@ -348,10 +496,10 @@ always @(posedge clk or negedge rstn) begin
                 if (!timeout && !syntaxe) begin
                     token_wait <= 0;
                     nibble_count <= 0;
-                    block_byte_idx <= 0;
                     state <= ST_DATA_WAIT;
                 end else begin
-                    state <= ST_READ_DONE;
+                    rerror <= 1'b1;
+                    state  <= ST_READ_DONE;
                 end
             end
         end
@@ -365,12 +513,23 @@ always @(posedge clk or negedge rstn) begin
                 if (sddat == 4'b0000) begin
                     token_wait <= 0;
                     nibble_count <= 0;
-                    block_byte_idx <= 0;
 
                     state <= ST_DATA_READ;
                 end else if (token_wait >= TOKEN_TIMEOUT) begin
-                    // Abort the multiblock operation.
-                    state <= ST_CMD12_START;
+                    // No data token arrived.  Retry the chunk silently a couple
+                    // of times before reporting a hard error; a marginal card
+                    // often succeeds on a second attempt.  The first retry also
+                    // drops back to the proven default-speed clock, which is
+                    // always legal and gives a struggling card more margin.
+                    if (retry_count < 2'd2) begin
+                        if (retry_count == 2'd0)
+                            clkdiv <= FASTCLKDIV;
+                        retry_count <= retry_count + 1'b1;
+                        state <= ST_RETRY_START;
+                    end else begin
+                        rerror <= 1'b1;
+                        state  <= ST_CMD12_START;
+                    end
                 end else begin
                     token_wait <= token_wait + 1'b1;
                 end
@@ -388,7 +547,7 @@ always @(posedge clk or negedge rstn) begin
                     // First nibble: bits 7:4.
                     outbyte[7:4] <= sddat;
                 end else begin
-                    // Second nibble: bits 3:0.
+                    // Second nibble: bits 3:0, so one whole byte is available.
                     outbyte[3:0] <= sddat;
 
                     // Emit one byte at the global transfer offset.
@@ -397,7 +556,6 @@ always @(posedge clk or negedge rstn) begin
 
                     byte_addr <= byte_addr + 1'b1;
 
-                    block_byte_idx <= block_byte_idx + 1'b1;
                 end
 
                 if (nibble_count == 10'd1023) begin
@@ -426,7 +584,6 @@ always @(posedge clk or negedge rstn) begin
 
                         token_wait <= 0;
                         nibble_count <= 0;
-                        block_byte_idx <= 0;
 
                         // CMD18 continues without another command.
                         state <= ST_DATA_WAIT;
@@ -444,15 +601,65 @@ always @(posedge clk or negedge rstn) begin
 
         ST_CMD12_START: begin
             if (!busy) begin
-                set_cmd(1, 96, 12, 32'h00000000);
+                set_cmd(1, 16, 12, 32'h00000000);
                 state <= ST_CMD12_WAIT;
             end
         end
 
         ST_CMD12_WAIT: begin
             if (done) begin
+                if (timeout || syntaxe)
+                    rerror <= 1'b1;
                 // Stop command has completed.
                 state <= ST_READ_DONE;
+            end
+        end
+
+        // ====================================================
+        // Silent retry: stop, let the bus go idle, re-read
+        // ====================================================
+
+        ST_RETRY_START: begin
+            if (!busy) begin
+                retry_timeout <= 0;
+                set_cmd(1, 16, 12, 32'h00000000);
+                state <= ST_RETRY_WAIT;
+            end
+        end
+
+        ST_RETRY_WAIT: begin
+            if (done) begin
+                retry_idle <= 0;
+                state <= ST_RETRY_IDLE;
+            end
+        end
+
+        ST_RETRY_IDLE: begin
+            if (sd_rising) begin
+                retry_timeout <= retry_timeout + 1'b1;
+
+                if (retry_timeout >= 16'hFFFF) begin
+                    // The card is holding the bus; stop retrying and finish so
+                    // the IOP still gets its completion interrupt.
+                    rerror <= 1'b1;
+                    state  <= ST_READ_DONE;
+                end else if (sddat == 4'b1111) begin
+                    if (retry_idle >= 8'd32) begin
+                        // Bus is quiet: rewind the chunk and start over.
+                        retry_idle     <= 0;
+                        sectors_done   <= 0;
+                        byte_addr      <= 0;
+                        outaddr        <= 0;
+                        nibble_count   <= 0;
+                        token_wait     <= 0;
+                        tail_count     <= 0;
+                        state <= ST_CMD18_START;
+                    end else begin
+                        retry_idle <= retry_idle + 1'b1;
+                    end
+                end else begin
+                    retry_idle <= 0;
+                end
             end
         end
 

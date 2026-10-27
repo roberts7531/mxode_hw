@@ -11,26 +11,25 @@ Previous declaration of 'dma_busy' is from here("/home/roberts7531/ai/ps2_MXODE/
 WARN  (EX3671) : Second declaration of 'dma_busy' is ignored("/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/nCommandProcessor.sv":329)
 Analyzing Verilog file '/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/sCommandProcessor.sv'
 Analyzing Verilog file '/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/sd_reader.sv'
+Undeclared symbol 'sdclk_sample', assumed default net type 'wire'("/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/sd_reader.sv":158)
 Analyzing Verilog file '/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/sdcmd_ctrl.sv'
 Analyzing Verilog file '/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/stm32_interface.sv'
 Analyzing Verilog file '/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/syncEdgeDetect.sv'
-WARN  (EX3073) : Port 'dma_has_bus' remains unconnected for this instance("/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/mxode_top.sv":164)
+WARN  (EX3073) : Port 'dma_has_bus' remains unconnected for this instance("/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/mxode_top.sv":166)
 Compiling module 'mxode_top'("/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/mxode_top.sv":1)
 Compiling module 'Gowin_rPLL'("/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/gowin_rpll/gowin_rpll.v":9)
 Compiling module 'sd_reader'("/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/sd_reader.sv":1)
 Compiling module 'sdcmd_ctrl'("/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/sdcmd_ctrl.sv":10)
-WARN  (EX3670) : Actual bit length 4 differs from formal bit length 5 for port 'card_stat'("/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/mxode_top.sv":68)
-WARN  (EX3670) : Actual bit length 4 differs from formal bit length 2 for port 'card_type'("/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/mxode_top.sv":69)
 WARN  (EX3670) : Actual bit length 16 differs from formal bit length 32 for port 'count'("/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/mxode_top.sv":77)
-WARN  (EX3073) : Port 'rising' remains unconnected for this instance("/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/sCommandProcessor.sv":83)
+WARN  (EX3073) : Port 'rising' remains unconnected for this instance("/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/sCommandProcessor.sv":84)
 Compiling module 'sCommandProcessor'("/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/sCommandProcessor.sv":1)
 WARN  (EX3073) : Port 'sync' remains unconnected for this instance("/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/stm32_interface.sv":44)
 WARN  (EX3073) : Port 'rising' remains unconnected for this instance("/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/stm32_interface.sv":52)
 WARN  (EX3073) : Port 'rising' remains unconnected for this instance("/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/stm32_interface.sv":60)
 Compiling module 'stm32_interface'("/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/stm32_interface.sv":1)
 Compiling module 'syncEdgeDetect'("/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/syncEdgeDetect.sv":1)
-WARN  (EX1998) : Net 'spi_tx[17][7]' does not have a driver("/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/sCommandProcessor.sv":29)
-WARN  (EX1998) : Net 'responseBuffer[20][7]' does not have a driver("/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/sCommandProcessor.sv":53)
+WARN  (EX1998) : Net 'spi_tx[17][7]' does not have a driver("/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/sCommandProcessor.sv":31)
+WARN  (EX1998) : Net 'responseBuffer[20][7]' does not have a driver("/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/sCommandProcessor.sv":55)
 Compiling module 'dmaCounter'("/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/dmaCounter.sv":1)
 WARN  (EX3073) : Port 'rising' remains unconnected for this instance("/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/nCommandProcessor.sv":59)
 WARN  (EX3073) : Port 'sync' remains unconnected for this instance("/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/nCommandProcessor.sv":65)
@@ -46,8 +45,8 @@ WARN  (EX3670) : Actual bit length 32 differs from formal bit length 1 for port 
 WARN  (EX3670) : Actual bit length 32 differs from formal bit length 1 for port 'oce'("/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/nCommandProcessor.sv":286)
 WARN  (EX3670) : Actual bit length 32 differs from formal bit length 13 for port 'adb'("/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/nCommandProcessor.sv":289)
 WARN  (EX1998) : Net 'cs_fall' does not have a driver("/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/nCommandProcessor.sv":301)
-WARN  (EX3670) : Actual bit length 16 differs from formal bit length 8 for port 'dataIn'("/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/mxode_top.sv":145)
-WARN  (EX3670) : Actual bit length 16 differs from formal bit length 32 for port 'sdReadCount'("/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/mxode_top.sv":161)
+WARN  (EX3670) : Actual bit length 16 differs from formal bit length 8 for port 'dataIn'("/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/mxode_top.sv":147)
+WARN  (EX3670) : Actual bit length 16 differs from formal bit length 32 for port 'sdReadCount'("/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/mxode_top.sv":163)
 NOTE  (EX0101) : Current top module is "mxode_top"
 WARN  (EX0211) : The output port "dma_has_bus" of module "nCommandProcessor" has no driver, assigning undriven bits to Z, simulation mismatch possible("/home/roberts7531/ai/ps2_MXODE/fpga/mxode/src/nCommandProcessor.sv":20)
 [5%] Running netlist conversion ...

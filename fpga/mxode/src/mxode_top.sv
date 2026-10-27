@@ -53,8 +53,8 @@ wire readSectorStart;
 wire readSectorDone;
 wire [31:0] sector_lba;
 wire sd_busy;
-wire [3:0] card_stat;
-wire [3:0] card_type;
+wire sd_read_error;
+wire sd_init_done;
 wire sdRst;
 sd_reader #(
     .CLK_DIV(3'd1),
@@ -65,12 +65,12 @@ sd_reader #(
     .sdclk    (sd_clk),
     .sdcmd    (sd_cmd),
     .sddat   (sd_dat),
-    .card_stat(card_stat),
-    .card_type(card_type),
     .rstart   (readSectorStart),
-    .startLba  (sector_lba),
+    .startLba (sector_lba),
     .rbusy    (sd_busy),
     .rdone    (readSectorDone),
+    .rerror   (sd_read_error),
+    .init_done(sd_init_done),
     .outen    (sdWr),
     .outaddr  (sdAddr),
     .outbyte  (sdOut),
@@ -110,7 +110,9 @@ sCommandProcessor sProcInst(
     .scopro_irq,
 
     .sdReset(sdRst),
-    .sdReady(!sd_busy)
+    .sdReady(!sd_busy),
+    .sdError(sd_read_error),
+    .sdInitialized(sd_init_done)
 
 );
 wire [31:0] dmaByteCount;

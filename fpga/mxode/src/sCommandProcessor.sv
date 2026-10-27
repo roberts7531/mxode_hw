@@ -17,6 +17,8 @@ module sCommandProcessor(
     output wire scopro_irq,
     
     input wire sdReady,
+    input wire sdError,
+    input wire sdInitialized,   // card identification already completed
     output logic sdReset
 );
 reg unknownCmd = 1'b0;
@@ -57,7 +59,6 @@ reg [7:0] responseRdIndex;
 reg [7:0] responseLength;
 reg sComTakenOver;
 
-
 wire dspWrite_sync;
 wire writeRising;
 wire writeFalling;
@@ -86,6 +87,7 @@ always @(posedge clk) begin
 	updateSticky <=0;
     spi_request <= 0;
     sdReset <= 1'b0;
+
     if (spi_ready) begin
         if (activeSCommand == 8'h41) begin
             for (integer i = 0; i < 19; i = i + 1)
@@ -361,12 +363,26 @@ always @(posedge clk) begin
                         8'hDE: begin // issue SDCARD reset 
                             responseLength <= 1'b1;
                             responseBuffer[0] <= 8'h00;
-                            sdReset <= 1'b1;
+                            // Only take the link down when it is not usable.
+                            // OPL reloads this driver inside the game's IOPRP at
+                            // launch, and its _start sends 0xDE: resetting a
+                            // healthy idle card there drops high-speed mode and
+                            // can abort the loader, which froze the game.  A
+                            // real fault (sdError) or an in-flight transfer
+                            // (sdReady low) still gets a full reset.
+                            if (sdInitialized && sdReady && !sdError)
+                                sdReset <= 1'b0;
+                            else
+                                sdReset <= 1'b1;
                             sComTakenOver <= 1'b1;
                         end
                         8'hDF: begin 
                             responseLength <= 1'b1;
-                            responseBuffer[0] <= {7'h0,sdReady};
+                            // bit0: SD state machine idle and card initialised
+                            // bit1: the last multi-block read hit a hard error
+                            //       (insertion/removal detection; older
+                            //       bitstreams leave this bit clear)
+                            responseBuffer[0] <= {6'h0,sdError,sdReady};
                             sComTakenOver <= 1'b1;
                         end
 					

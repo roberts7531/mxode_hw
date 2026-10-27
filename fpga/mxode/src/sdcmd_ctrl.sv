@@ -12,6 +12,13 @@ module sdcmd_ctrl (
     input  wire         clk,
     // SDcard signals (sdclk and sdcmd)
     output reg          sdclk,
+    // One-cycle pulse aligned to the SD clock rising edge.  Data and start
+    // tokens are launched by the card on the falling edge, so this is the
+    // correct instant to sample them (and it is what the command response
+    // path already uses).  Sampling one core clock later, as the old
+    // edge-detect did, lands on the falling edge when the card clock is
+    // running at half the core rate (45 MHz from a 90 MHz core).
+    output wire         sdclk_sample,
     inout               sdcmd,
     // config clk freq
     input  wire  [15:0] clkdiv,
@@ -64,6 +71,10 @@ reg  [ 5:0] cnt2 = '1;
 reg  [ 7:0] cnt3 = '0;
 reg  [ 7:0] cnt4 = '1;
 
+// clkcnt wraps to zero on the cycle in which sdclk is driven high, so this
+// pulse identifies the SD clock rising edge.
+assign sdclk_sample = (clkcnt == 18'd0);
+
 
 always @ (posedge clk or negedge rstn)
     if(~rstn) begin
@@ -84,12 +95,13 @@ always @ (posedge clk or negedge rstn)
         clkcnt <= ( clkcnt < {clkdivr[16:0],1'b1} ) ? clkcnt+18'd1 : '0;
         
         if     (clkcnt == '0)
-            clkdivr <= {2'h0, clkdiv} + 18'd1;
+            clkdivr <= (clkdiv == 16'hFFFF) ? 18'd0 :
+                       ({2'h0, clkdiv} + 18'd1);
         
-        if(clkcnt == clkdivr)
-            sdclk <= 1'b0;
-        else if(clkcnt == {clkdivr[16:0],1'b1} )
+        if(clkcnt == 18'd0)
             sdclk <= 1'b1;
+        else if(clkcnt == clkdivr + 18'd1)
+            sdclk <= 1'b0;
         
         if(~busy) begin
             if(start) busy <= '1;
@@ -102,7 +114,7 @@ always @ (posedge clk or negedge rstn)
             cnt4 <= 8'd134;
         end else if(done) begin
             busy <= '0;
-        end else if( clkcnt == clkdivr) begin
+        end else if( clkcnt == clkdivr + 18'd1 ) begin
             {sdcmdoe, sdcmdout} <= 2'b01;
             if     (cnt1 != '0) begin
                 cnt1 <= cnt1 - 16'd1;
@@ -111,7 +123,7 @@ always @ (posedge clk or negedge rstn)
                 {sdcmdoe, sdcmdout} <= {1'b1, request[cnt2]};
                 if(cnt2>=8 && cnt2<48) req_crc <= CalcCrc7(req_crc, request[cnt2]);
             end
-        end else if( clkcnt == {clkdivr[16:0],1'b1} && cnt1=='0 && cnt2=='1 ) begin
+        end else if( clkcnt == 18'd0 && cnt1=='0 && cnt2=='1 ) begin
             if(cnt3 != '0) begin
                 cnt3 <= cnt3 - 8'd1;
                 if(~sdcmdin)
